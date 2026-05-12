@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Junta-te à comunidade gratuita Olha para mim, chamadas semanais, vídeos práticos e uma comunidade de donos de cães que estão a passar pelo mesmo que tu.">
+  <title>Comunidade Olha para mim | Cães com Simão</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg:         #181e18;
+      --bg2:        #1f261f;
+      --bg3:        #161c16;
+      --cream:      #f4efe6;
+      --cream-dark: #ece7db;
+      --border:     rgba(255,255,255,.08);
+      --border-c:   rgba(0,0,0,.09);
+      --primary:    #3e5e3a;
+      --primary-h:  #4f7a4f;
+      --green:      #7ab87a;
+      --muted:      rgba(255,255,255,.52);
+      --muted-dark: rgba(0,0,0,.55);
+      --r:          .625rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 700; }
+
+    .wrap    { max-width: 72rem; margin: 0 auto; padding: 0 1.75rem; }
+    .wrap-sm { max-width: 44rem; margin: 0 auto; padding: 0 1.75rem; }
+    .wrap-md { max-width: 56rem; margin: 0 auto; padding: 0 1.75rem; }
+
+    /* Tags */
+    .tag { display: inline-flex; align-items: center; padding: .3rem .9rem; font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; border-radius: 9999px; border: 1px solid; }
+    .tag-d { color: var(--green); background: rgba(122,184,122,.07); border-color: rgba(122,184,122,.22); }
+    .tag-l { color: var(--primary); background: rgba(62,94,58,.07); border-color: rgba(62,94,58,.22); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .375rem; padding: .75rem 1.625rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .9rem; font-weight: 600; letter-spacing: -.005em; text-decoration: none; border: none; cursor: pointer; transition: background .18s, transform .14s cubic-bezier(.16,1,.3,1); }
+    .btn:active { transform: translateY(0) !important; }
+    .btn-g  { background: var(--primary); color: #fff; }
+    .btn-g:hover  { background: var(--primary-h); transform: translateY(-1px); }
+    .btn-wo { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.55); }
+    .btn-wo:hover { border-color: #fff; transform: translateY(-1px); }
+    .btn-do { background: transparent; color: #1a1a17; border: 1.5px solid rgba(0,0,0,.22); font-size: .875rem; }
+    .btn-do:hover { border-color: rgba(0,0,0,.45); transform: translateY(-1px); }
+
+    /* Nav */
+    #nav { position: fixed; inset-inline: 0; top: 0; z-index: 200; height: 4rem; display: flex; align-items: center; justify-content: space-between; padding: 0 6rem; background: rgba(22,28,22,.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-logo { height: 2.375rem; width: 2.375rem; display: block; flex-shrink: 0; }
+    .nav-links { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.52); text-decoration: none; transition: color .18s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.nav-active { color: #fff; font-weight: 700; }
+    .btn-nav-cta { background: #fff; color: #161c16; padding: .55rem 1.375rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem; font-weight: 600; text-decoration: none; transition: background .18s, transform .14s; }
+    .btn-nav-cta:hover { background: rgba(255,255,255,.88); transform: translateY(-1px); }
+    .mob-btn { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 6px; z-index: 201; position: relative; }
+    .mob-btn span { display: block; width: 20px; height: 2px; background: rgba(255,255,255,.6); border-radius: 2px; transition: transform .22s ease, opacity .22s ease; }
+    .mob-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mob-btn.open span:nth-child(2) { opacity: 0; }
+    .mob-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mob-menu { display: flex; position: fixed; inset: 0; z-index: 199; background: rgba(22,28,22,.97); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: transform .5s cubic-bezier(.16,1,.3,1); visibility: hidden; }
+    .mob-menu.open { transform: translateY(0); visibility: visible; }
+    .mob-menu a { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 700; color: rgba(255,255,255,.75); text-decoration: none; opacity: 0; transform: translateY(14px); transition: opacity .3s ease, transform .3s ease, color .18s; }
+    .mob-menu.open a:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:.22s; }
+    .mob-menu.open a:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:.30s; }
+    .mob-menu.open a:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:.38s; }
+    .mob-menu.open a:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:.46s; }
+    .mob-menu.open a:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:.54s; }
+    .mob-menu a:hover { color: #fff; }
+    .mob-menu a.nav-active { color: var(--green); }
+    .mob-menu .mob-cta { margin-top: .5rem; background: #fff; color: #161c16; padding: .75rem 2rem; border-radius: 9999px; font-size: 1rem; font-weight: 700; }
+
+    /* ── Hero ───────────────────────────────────────── */
+    #hero { background: var(--bg); padding: 10rem 0 6rem; position: relative; text-align: center; }
+    #hero::before { content: ''; position: absolute; inset: 0; background: url('brand_assets/hero-bg-img.jpg') center/cover no-repeat; opacity: .04; pointer-events: none; }
+    .com-h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.1; color: #fff; margin: 1.25rem 0 1.25rem; }
+    .com-h1 em { font-style: italic; color: var(--green); }
+    .com-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; max-width: 38ch; margin: 0 auto 2.25rem; }
+    .com-fine { font-size: .78rem; color: rgba(255,255,255,.32); margin-top: .875rem; }
+
+    /* ── Features ───────────────────────────────────── */
+    #features { background: var(--bg); padding: 5.5rem 0; border-top: 1px solid var(--border); }
+    .feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+    .feat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); padding: 2rem; }
+    .feat-icon { font-size: 1.75rem; margin-bottom: 1.125rem; }
+    .feat-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+    .feat-text { font-size: .875rem; color: var(--muted); line-height: 1.72; }
+
+    /* ── Why free ───────────────────────────────────── */
+    #why { background: var(--cream); padding: 5.5rem 0; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .why-h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; color: #1a1a17; line-height: 1.15; margin-bottom: 1.25rem; }
+    .why-p { font-size: .95rem; color: var(--muted-dark); line-height: 1.78; margin-bottom: 1rem; }
+    .why-quote { background: #1a1a17; color: #fff; border-radius: var(--r); padding: 2rem; position: relative; }
+    .why-quote::before { content: '"'; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 4rem; color: var(--green); line-height: .8; display: block; margin-bottom: .5rem; }
+    .why-quote p { font-size: .95rem; line-height: 1.72; color: rgba(255,255,255,.82); font-style: italic; }
+    .why-quote cite { display: block; margin-top: 1rem; font-size: .8rem; font-style: normal; color: var(--green); font-weight: 600; }
+
+    /* ── Social proof strip ─────────────────────────── */
+    #proof { background: var(--bg); padding: 4rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .proof-strip { display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap; }
+    .proof-item { text-align: center; }
+    .proof-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; font-weight: 800; color: #fff; letter-spacing: -.03em; }
+    .proof-lbl { font-size: .82rem; color: var(--muted); margin-top: .25rem; }
+
+    /* ── Form ───────────────────────────────────────── */
+    #form-section { background: var(--cream); padding: 6rem 0; }
+    .form-h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; color: #1a1a17; margin-bottom: .75rem; }
+    .form-sub { font-size: .95rem; color: var(--muted-dark); line-height: 1.7; margin-bottom: 2.5rem; }
+    .form-box { background: #fff; border-radius: calc(var(--r) * 1.5); border: 1px solid var(--border-c); padding: 2.5rem; box-shadow: 0 4px 32px rgba(0,0,0,.07); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .form-label { font-size: .8rem; font-weight: 600; color: #1a1a17; letter-spacing: .01em; }
+    .form-input { padding: .75rem 1rem; border: 1.5px solid rgba(0,0,0,.14); border-radius: calc(var(--r) - 2px); font-family: 'Inter', sans-serif; font-size: .9rem; color: #1a1a17; background: #fafaf8; outline: none; transition: border-color .18s; }
+    .form-input:focus { border-color: var(--primary); background: #fff; }
+    .form-input::placeholder { color: rgba(0,0,0,.3); }
+    textarea.form-input { resize: vertical; min-height: 100px; }
+    .form-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: .9rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background .18s, transform .14s; margin-top: .5rem; }
+    .form-submit:hover { background: var(--primary-h); transform: translateY(-1px); }
+    .form-fine { font-size: .75rem; color: rgba(0,0,0,.38); text-align: center; margin-top: 1rem; }
+    .form-check { display: flex; align-items: flex-start; gap: .625rem; margin-bottom: 1.25rem; }
+    .form-check input[type="checkbox"] { flex-shrink: 0; width: 1.05rem; height: 1.05rem; margin-top: .15rem; accent-color: var(--primary); cursor: pointer; }
+    .form-check label { font-size: .82rem; color: rgba(0,0,0,.6); line-height: 1.55; cursor: pointer; }
+
+    /* ── Section heading shared ─────────────────────── */
+    .sec-head { text-align: center; margin-bottom: 1rem; }
+    .sec-h2-d { font-size: clamp(1.75rem, 3.8vw, 2.75rem); font-weight: 800; letter-spacing: -.03em; color: #fff; margin-bottom: .75rem; }
+    .sec-sub-d { font-size: .95rem; color: var(--muted); max-width: 48ch; margin: 0 auto; line-height: 1.7; }
+    .sec-h2-l { font-size: clamp(1.75rem, 3.8vw, 2.75rem); font-weight: 800; letter-spacing: -.03em; color: #1a1a17; margin-bottom: .75rem; }
+    .sec-sub-l { font-size: .95rem; color: var(--muted-dark); max-width: 48ch; margin: 0 auto; line-height: 1.7; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    footer { background: var(--bg3); padding: 3.5rem 0 2rem; border-top: 1px solid var(--border); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 2.5rem; margin-bottom: 2.75rem; }
+    .footer-logo { height: 2.25rem; width: auto; display: block; margin-bottom: 1.125rem; filter: brightness(0) invert(1); opacity: .7; }
+    .footer-desc { font-size: .85rem; color: rgba(255,255,255,.42); line-height: 1.75; max-width: 26ch; margin-bottom: 1.125rem; }
+    .footer-contact { display: flex; flex-direction: column; gap: .375rem; }
+    .footer-contact a { font-size: .82rem; color: rgba(255,255,255,.42); text-decoration: none; transition: color .2s; }
+    .footer-contact a:hover { color: #fff; }
+    .footer-col-h { font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .875rem; }
+    .footer-nav { display: flex; flex-direction: column; gap: .5rem; }
+    .footer-nav a { font-size: .85rem; color: rgba(255,255,255,.52); text-decoration: none; transition: color .2s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-social { display: flex; gap: .625rem; margin-bottom: 1.5rem; }
+    .footer-si { width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: .7rem; color: rgba(255,255,255,.42); text-decoration: none; transition: border-color .2s, color .2s; }
+    .footer-si:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+    .footer-legal { display: flex; flex-direction: column; gap: .375rem; }
+    .footer-legal a { font-size: .78rem; color: rgba(255,255,255,.32); text-decoration: none; transition: color .2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.7); }
+    .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: .78rem; color: rgba(255,255,255,.28); }
+    .footer-wm { font-size: .78rem; color: rgba(255,255,255,.2); }
+
+    /* ── Animations ─────────────────────────────────── */
+    @keyframes navIn  { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+    @keyframes heroUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+    #nav { animation: navIn .5s ease both; }
+    .hero-tag  { animation: heroUp .6s .1s  ease both; }
+    .com-h1    { animation: heroUp .7s .24s ease both; }
+    .com-sub   { animation: heroUp .6s .4s  ease both; }
+    .hero-cta  { animation: heroUp .6s .52s ease both; }
+    .com-fine  { animation: heroUp .6s .64s ease both; }
+    .anim { opacity:0; transform:translateY(28px); transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
+    .anim.in { opacity:1; transform:none; }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 960px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      #nav { padding: 0 1.25rem; }
+      .mob-btn { display: flex; }
+      .btn-nav-cta { display: none; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .proof-strip { gap: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="index.html">
+    <img src="brand_assets/logo-6.svg" alt="Cães com Simão" class="nav-logo" width="38" height="38">
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Casa</a>
+    <a href="index.html#solutions">Treino</a>
+    <a href="comunidade.html" class="nav-active">Comunidade Grátis</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="avaliacao.html" class="btn-nav-cta">Avaliação Gratuita</a>
+    <button class="mob-btn" aria-label="Menu" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mob-menu">
+  <a href="index.html"           onclick="closeMenu()">Casa</a>
+  <a href="treino.html" onclick="closeMenu()">Treino</a>
+  <a href="comunidade.html" onclick="closeMenu()" class="nav-active">Comunidade</a>
+  <a href="contacto.html"   onclick="closeMenu()">Contacto</a>
+  <a href="avaliacao.html" class="mob-cta" onclick="closeMenu()">Avaliação Gratuita</a>
+</div>
+
+<script>
+function toggleMenu(btn) {
+  const isOpen = btn.classList.toggle('open');
+  document.getElementById('mob-menu').classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  document.querySelector('.mob-btn').classList.remove('open');
+  document.getElementById('mob-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+<!-- ══ HERO ═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="wrap-sm" style="position:relative;z-index:1;text-align:center;">
+    <div class="tag tag-d hero-tag" style="margin-bottom:1.5rem;">+ Comunidade Gratuita</div>
+    <h1 class="com-h1">Junta-te à comunidade<br><em>Olha para mim</em></h1>
+    <p class="com-sub">Uma comunidade para donos de cães onde podes aprender, fazer perguntas e evoluir, todas as semanas. Sem custos. Sem compromisso.</p>
+    <div class="hero-cta" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="#form-section" class="btn btn-g" style="font-size:.975rem;padding:.85rem 2rem;">Quero entrar, é grátis &nbsp;→</a>
+    </div>
+    <p class="com-fine">Sem spam. Podes sair quando quiseres.</p>
+  </div>
+</section>
+
+<!-- ══ FEATURES ═══════════════════════════════════════ -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag tag-d" style="margin-bottom:1.25rem;">+ O que tens acesso</div>
+      <h2 class="sec-h2-d">Tudo o que precisas,<br>sem pagar nada.</h2>
+      <p class="sec-sub-d">Cada recurso foi pensado para te ajudar a perceber o teu cão e a agir com mais clareza no dia a dia.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📞</div>
+        <div class="feat-title">Chamadas semanais ao vivo</div>
+        <div class="feat-text">Todas as semanas há uma chamada em grupo onde podes trazer as tuas dúvidas, situações reais e receber resposta directa. Sem guiões, sem teoria, só casos concretos.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎥</div>
+        <div class="feat-title">Vídeos práticos de treino</div>
+        <div class="feat-text">Exercícios simples que podes aplicar amanhã, com o teu cão, no teu ambiente. Cada vídeo resolve uma situação específica: reactividade, foco, recall, calma em casa.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🐾</div>
+        <div class="feat-title">Comunidade de apoio real</div>
+        <div class="feat-text">Um grupo de donos que estão a passar pelo mesmo que tu. Podes partilhar progressos, tirar dúvidas entre sessões e perceber que não estás sozinho nisto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROOF STRIP ════════════════════════════════════ -->
+<section id="proof">
+  <div class="wrap">
+    <div class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-num">100%</div>
+        <div class="proof-lbl">Gratuito, sempre</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">Semanal</div>
+        <div class="proof-lbl">Chamadas ao vivo</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">0€</div>
+        <div class="proof-lbl">Para entrar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY FREE ════════════════════════════════════════ -->
+<section id="why">
+  <div class="wrap">
+    <div class="why-grid">
+      <div>
+        <div class="tag tag-l" style="margin-bottom:1.25rem;">+ Porque é gratuita?</div>
+        <h2 class="why-h2">Honestidade<br>antes de tudo.</h2>
+        <p class="why-p">Esta comunidade é gratuita porque acredito que a melhor forma de te mostrar o que faço é simplesmente ajudar-te, sem pedir nada em troca.</p>
+        <p class="why-p">Quando vires resultados, quando o teu cão começar a responder de forma diferente, quando perceberes que há um método que funciona, muitos membros acabam por querer ir mais fundo com um programa presencial ou online.</p>
+        <p class="why-p" style="color:#1a1a17;font-weight:600;">Mas isso é sempre uma decisão tua. Nunca uma pressão.</p>
+      </div>
+      <div class="why-quote">
+        <p>Entrei a pensar que não ia ajudar muito. Fiquei pela comunidade porque aprendi mais em duas semanas do que em meses a procurar sozinha no YouTube.</p>
+        <cite>Maria, dona do Bobi (Border Collie reativo)</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORM ════════════════════════════════════════════ -->
+<section id="form-section">
+  <div class="wrap-md">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="tag tag-l" style="margin-bottom:1.25rem;">+ Reserva o teu lugar</div>
+      <h2 class="form-h2">Entra na comunidade hoje.</h2>
+      <p class="form-sub">Preenche o formulário e recebemos o teu pedido. Entramos em contacto com o link de acesso em menos de 24h.</p>
+    </div>
+    <div class="form-box">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="name">Nome</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="O teu nome" required>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="o.teu@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Telemóvel</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="+351 900 000 000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="dog">Fala-me um pouco sobre o teu cão</label>
+          <textarea class="form-input" id="dog" name="dog" placeholder="Raça, idade, o que se passa... quanto mais detalhes melhor." required></textarea>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">Aceito receber informações de treino canino e ofertas da Cães com Simão por email. Sem spam, podes cancelar a qualquer momento.</label>
+        </div>
+        <button type="submit" class="form-submit">Quero entrar na comunidade →</button>
+        <p class="form-fine">✦ Gratuito. Sem spam. Os teus dados não são partilhados com terceiros.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="brand_assets/logo-6.svg" alt="Cães com Simão" class="footer-logo">
+        <p class="footer-desc">Ajudo donos de cães agressivos, reativos, ou fora de controlo a transformar o comportamento do seu cão.</p>
+        <div class="footer-contact">
+          <a href="mailto:simao@caescomsimao.com">simao@caescomsimao.com</a>
+          <a href="tel:+351887789878">+351 887 789 878</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-h">Índice</div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="index.html#solutions">Como Funciona</a>
+          <a href="index.html#testimonials">Testemunhos</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-h">Comunidade</div>
+        <nav class="footer-nav">
+          <a href="comunidade.html">Olha para mim</a>
+          <a href="index.html#programs">Programas</a>
+          <a href="index.html#about">Acerca de Mim</a>
+        </nav>
+      </div>
+      <div>
+        <div class="footer-col-h">Redes Sociais</div>
+        <div class="footer-social">
+          <a href="#" class="footer-si" aria-label="YouTube">▶</a>
+          <a href="#" class="footer-si" aria-label="Instagram">◉</a>
+          <a href="#" class="footer-si" aria-label="Spotify">♪</a>
+        </div>
+        <div class="footer-col-h">Legal</div>
+        <div class="footer-legal">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Cães com Simão · Direitos Reservados</p>
+      <p class="footer-wm">Cães com Simão</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Nav opacity on scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 30
+      ? 'rgba(22,28,22,.98)'
+      : 'rgba(22,28,22,.95)';
+  }, {passive:true});
+
+  /* Form submit */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Pedido recebido, falamos em breve!';
+    btn.style.background = '#2c5f2e';
+    btn.disabled = true;
+  }
+</script>
+
+<script>
+(function() {
+  const els = document.querySelectorAll('.sec-head, .feat-card, .proof-item, .why-grid > *, .form-box, .form-box + *');
+  const parentSeen = new Map();
+  els.forEach(el => {
+    const p = el.parentElement;
+    const idx = parentSeen.get(p) ?? 0;
+    parentSeen.set(p, idx + 1);
+    el.style.transitionDelay = idx * 0.1 + 's';
+    el.classList.add('anim');
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

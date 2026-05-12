@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Treino canino especializado em cães reativos e agressivos. Meadela, Viana do Castelo. Avaliação gratuita.">
+  <title>Cães com Simão | Treino Canino</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg:          #181e18;
+      --bg2:         #1f261f;
+      --bg3:         #161c16;
+      --cream:       #f4efe6;
+      --cream-dark:  #ece7db;
+      --border:      rgba(255,255,255,.08);
+      --border-c:    rgba(0,0,0,.09);
+      --primary:     #3e5e3a;
+      --primary-h:   #4f7a4f;
+      --green:       #7ab87a;
+      --muted:       rgba(255,255,255,.52);
+      --muted-dark:  rgba(0,0,0,.55);
+      --r:           .625rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: #fff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 700; }
+
+    .wrap    { max-width: 72rem; margin: 0 auto; padding: 0 1.75rem; }
+    .wrap-sm { max-width: 44rem; margin: 0 auto; padding: 0 1.75rem; }
+
+    /* ── Tags ──────────────────────────────────────── */
+    .tag {
+      display: inline-flex; align-items: center;
+      padding: .3rem .9rem;
+      font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+      border-radius: 9999px; border: 1px solid;
+    }
+    .tag-d { color: var(--green); background: rgba(122,184,122,.07); border-color: rgba(122,184,122,.22); }
+    .tag-l { color: var(--primary); background: rgba(62,94,58,.07); border-color: rgba(62,94,58,.22); }
+
+    /* ── Buttons ───────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .375rem;
+      padding: .75rem 1.625rem; border-radius: 9999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .9rem; font-weight: 600; letter-spacing: -.005em;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .18s, transform .14s cubic-bezier(.16,1,.3,1);
+    }
+    .btn:active { transform: translateY(0) !important; }
+    .btn-g  { background: var(--primary); color: #fff; }
+    .btn-g:hover  { background: var(--primary-h); transform: translateY(-1px); }
+    .btn-wo { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.55); }
+    .btn-wo:hover { border-color: #fff; transform: translateY(-1px); }
+    .btn-do { background: transparent; color: #1a1a17; border: 1.5px solid rgba(0,0,0,.22); font-size: .875rem; }
+    .btn-do:hover { border-color: rgba(0,0,0,.45); transform: translateY(-1px); }
+
+    /* ── Nav ───────────────────────────────────────── */
+    #nav {
+      position: fixed; inset-inline: 0; top: 0; z-index: 200;
+      height: 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6rem;
+      background: rgba(22,28,22,.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    }
+    .nav-logo { height: 2.375rem; width: 2.375rem; display: block; flex-shrink: 0; }
+    .nav-links {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 2rem; align-items: center;
+    }
+    .nav-links a {
+      font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.52);
+      text-decoration: none; transition: color .18s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.nav-active { color: #fff; font-weight: 700; }
+    .btn-nav-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: .55rem 1.375rem; border-radius: 9999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .875rem; font-weight: 600; letter-spacing: -.005em;
+      background: #fff; color: #161c16;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .18s, transform .14s cubic-bezier(.16,1,.3,1);
+      white-space: nowrap;
+    }
+    .btn-nav-cta:hover { background: rgba(255,255,255,.88); transform: translateY(-1px); }
+    .btn-nav-cta:active { transform: translateY(0); }
+    .mob-btn { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 6px; z-index: 201; position: relative; }
+    .mob-btn span { display: block; width: 20px; height: 2px; background: rgba(255,255,255,.6); border-radius: 2px; transition: transform .22s ease, opacity .22s ease; }
+    .mob-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mob-btn.open span:nth-child(2) { opacity: 0; }
+    .mob-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mob-menu {
+      display: flex; position: fixed; inset: 0; z-index: 199;
+      background: rgba(22,28,22,.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem;
+      transform: translateY(-100%);
+      transition: transform .5s cubic-bezier(.16,1,.3,1);
+      visibility: hidden;
+    }
+    .mob-menu.open { transform: translateY(0); visibility: visible; }
+    .mob-menu a {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem; font-weight: 700; color: rgba(255,255,255,.75);
+      text-decoration: none;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity .3s ease, transform .3s ease, color .18s;
+    }
+    .mob-menu.open a:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:.22s; }
+    .mob-menu.open a:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:.30s; }
+    .mob-menu.open a:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:.38s; }
+    .mob-menu.open a:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:.46s; }
+    .mob-menu.open a:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:.54s; }
+    .mob-menu.open a:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:.62s; }
+    .mob-menu a:hover { color: #fff; }
+    .mob-menu a.nav-active { color: var(--green); }
+    .mob-menu .mob-cta {
+      margin-top: .5rem; background: #fff; color: #161c16;
+      padding: .75rem 2rem; border-radius: 9999px;
+      font-size: 1rem; font-weight: 700;
+    }
+
+    /* ── Hero ───────────────────────────────────────── */
+    #hero { background: var(--bg); padding-top: 4rem; position: relative; }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('brand_assets/hero-bg-img.jpg') center/cover no-repeat;
+      opacity: 0.04; pointer-events: none; z-index: 0;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-text {
+      text-align: center; padding: 4.5rem 1.75rem 3rem;
+      max-width: 52rem; margin: 0 auto;
+    }
+    .hero-h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; letter-spacing: -.03em; line-height: 1.1;
+      color: #fff; margin-bottom: 1.25rem;
+    }
+    .hero-sub {
+      font-size: clamp(.875rem, 1.5vw, 1rem);
+      color: rgba(255,255,255,.58); line-height: 1.72; max-width: 48ch;
+      margin: 0 auto 2rem;
+    }
+    .hero-trust {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem;
+    }
+    .hero-trust-item {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.6);
+    }
+    .hero-trust-icon {
+      width: 1.1rem; height: 1.1rem; border-radius: 50%;
+      border: 1.5px solid rgba(122,184,122,.55);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-trust-icon svg { width: .6rem; height: .6rem; }
+    .hero-avail {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .3rem .9rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .04em;
+      border-radius: 9999px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1.75rem;
+    }
+    .hero-dot {
+      width: .45rem; height: .45rem; border-radius: 50%;
+      background: var(--green);
+    }
+    .hero-photos {
+      display: flex; justify-content: center; align-items: flex-end;
+      position: relative; z-index: 10;
+      margin-top: 3.5rem;
+    }
+    .hero-ph {
+      position: relative; flex-shrink: 0;
+      width: 290px; aspect-ratio: 3/4;
+      border-radius: 1rem; overflow: hidden;
+      border: 2.5px solid rgba(255,255,255,.88);
+      box-shadow: 0 8px 40px rgba(0,0,0,.55);
+    }
+    .hero-ph + .hero-ph { margin-left: -100px; }
+    .hero-ph:nth-child(1) { z-index: 1; transform: rotate(-5deg); }
+    .hero-ph:nth-child(2) { z-index: 2; transform: rotate(3deg); }
+    .hero-ph:nth-child(3) { z-index: 3; transform: rotate(-2deg); }
+    .hero-ph:nth-child(4) { z-index: 4; transform: rotate(5deg); }
+    .hero-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── Challenges (cream) ─────────────────────────── */
+    #challenges { background: var(--cream); padding: 5.5rem 0; position: relative; z-index: 2; }
+    .ch-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 3.5rem; align-items: center; }
+    .ch-left-head {
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      font-weight: 800; letter-spacing: -.025em; color: #1a1a17; line-height: 1.18;
+      margin-bottom: 1rem;
+    }
+    .ch-left-sub { font-size: .925rem; color: var(--muted-dark); line-height: 1.75; }
+    .ch-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.875rem;
+    }
+    .ch-item { padding: 1.125rem 0; border-bottom: 1px solid var(--border); }
+    .ch-item:first-child { padding-top: 0; }
+    .ch-item-head { display: flex; align-items: baseline; gap: .625rem; margin-bottom: .375rem; }
+    .ch-num  { font-size: .68rem; font-weight: 700; letter-spacing: .06em; color: var(--green); flex-shrink: 0; }
+    .ch-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .975rem; font-weight: 700; color: #fff; }
+    .ch-text  { font-size: .855rem; color: var(--muted); line-height: 1.72; }
+    .ch-quote {
+      margin-top: 1.125rem;
+      padding: 1.125rem 1.25rem;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: calc(var(--r) - 2px);
+    }
+    .ch-qt { font-size: .855rem; font-style: italic; color: rgba(255,255,255,.68); line-height: 1.72; }
+    .ch-card-footer {
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: .8rem; color: rgba(255,255,255,.42); line-height: 1.6;
+    }
+    .ch-card-footer em { font-style: italic; }
+
+    /* ── Solutions (dark) ───────────────────────────── */
+    #solutions { background: var(--bg); padding: 5.5rem 0; }
+    .sec-head { text-align: center; margin-bottom: 2.75rem; }
+    .sec-h2-d {
+      font-size: clamp(1.75rem, 3.8vw, 2.75rem);
+      font-weight: 800; letter-spacing: -.03em; color: #fff; margin-bottom: .75rem;
+    }
+    .sec-sub-d { font-size: .95rem; color: var(--muted); max-width: 44ch; margin: 0 auto; line-height: 1.7; }
+    .sol-g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: .875rem; }
+    .sol-g2 { display: flex; justify-content: center; gap: .875rem; margin-top: .875rem; }
+    .sol-g2 .sol-card { flex: 0 0 calc((100% - 2 * .875rem) / 3); }
+    .sol-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 2rem;
+      transition: border-color .2s;
+    }
+    .sol-card:hover { border-color: rgba(255,255,255,.18); }
+    .sol-num   { font-size: 1.75rem; font-weight: 700; color: var(--green); margin-bottom: .625rem; }
+    .sol-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .375rem; }
+    .sol-text  { font-size: .855rem; color: var(--muted); line-height: 1.72; }
+
+    /* ── Differentiation (cream) ────────────────────── */
+    #diff { background: #fff; padding: 5.5rem 0; border-top: 1px solid rgba(0,0,0,.07); border-bottom: 1px solid rgba(0,0,0,.07); }
+    .sec-h2-l {
+      font-size: clamp(1.75rem, 3.8vw, 2.75rem);
+      font-weight: 800; letter-spacing: -.03em; color: #1a1a17; margin-bottom: .75rem;
+    }
+    .sec-sub-l { font-size: .95rem; color: var(--muted-dark); max-width: 48ch; margin: 0 auto; line-height: 1.7; }
+
+    /* ── VS Table ───────────────────────────────────────── */
+    .vs-table { display: grid; grid-template-columns: 1.5fr 1fr 1fr; border-radius: calc(var(--r) * 1.5); overflow: hidden; border: 1px solid rgba(0,0,0,.1); margin-top: 3.5rem; }
+    .vs-h-label { background: #f5f4f0; padding: 1.25rem 1.75rem; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(0,0,0,.38); border-bottom: 1px solid rgba(0,0,0,.07); }
+    .vs-h-us { background: var(--primary); padding: 1.25rem 1.75rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem; font-weight: 700; color: #fff; border-bottom: 1px solid rgba(255,255,255,.12); display: flex; align-items: center; gap: .5rem; }
+    .vs-h-them { background: #eceae4; padding: 1.25rem 1.75rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem; font-weight: 700; color: rgba(0,0,0,.42); border-bottom: 1px solid rgba(0,0,0,.07); }
+    .vs-label { background: #faf9f6; padding: 1rem 1.75rem; font-size: .82rem; font-weight: 600; color: rgba(0,0,0,.52); border-bottom: 1px solid rgba(0,0,0,.06); display: flex; align-items: center; }
+    .vs-us { background: rgba(44,95,46,.07); padding: 1rem 1.75rem; font-size: .875rem; color: #192d19; border-bottom: 1px solid rgba(44,95,46,.1); display: flex; align-items: center; gap: .625rem; font-weight: 500; }
+    .vs-them { background: #faf9f6; padding: 1rem 1.75rem; font-size: .875rem; color: rgba(0,0,0,.36); border-bottom: 1px solid rgba(0,0,0,.06); display: flex; align-items: center; gap: .625rem; }
+    .vs-ok { color: var(--green); font-size: .8rem; flex-shrink: 0; }
+    .vs-x { color: #e05252; font-size: .8rem; flex-shrink: 0; }
+
+    /* ── Para Ti Table ──────────────────────────────────── */
+    .parati-table { display: grid; grid-template-columns: 1fr 1fr; border-radius: calc(var(--r) * 1.5); overflow: hidden; border: 1px solid rgba(0,0,0,.1); margin-top: 3.5rem; }
+    .parati-head-yes { background: var(--primary); padding: 1.5rem 2rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: #fff; }
+    .parati-head-no { background: var(--cream-dark); padding: 1.5rem 2rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: rgba(0,0,0,.4); border-left: 1px solid rgba(0,0,0,.07); }
+    .parati-yes { background: rgba(62,94,58,.06); padding: 1.1rem 2rem; font-size: .9rem; color: #1a1a17; border-bottom: 1px solid rgba(62,94,58,.1); display: flex; align-items: flex-start; gap: .625rem; line-height: 1.5; }
+    .parati-yes::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
+    .parati-no { background: var(--cream-dark); padding: 1.1rem 2rem; font-size: .9rem; color: rgba(0,0,0,.48); border-bottom: 1px solid rgba(0,0,0,.06); border-left: 1px solid rgba(0,0,0,.07); display: flex; align-items: flex-start; gap: .625rem; line-height: 1.5; }
+    .parati-no::before { content: '✗'; color: rgba(0,0,0,.28); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
+
+    /* ── Números strip ──────────────────────────────────── */
+    #numeros { background: var(--bg3); padding: 5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .num-strip { display: grid; grid-template-columns: repeat(4,1fr); }
+    .num-item { text-align: center; padding: 1.5rem 1rem; border-right: 1px solid var(--border); }
+    .num-item:last-child { border-right: none; }
+    .num-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3.25rem; font-weight: 800; color: #fff; letter-spacing: -.05em; line-height: 1; }
+    .num-val em { color: var(--green); font-style: normal; }
+    .num-lbl { font-size: .82rem; color: var(--muted); margin-top: .625rem; line-height: 1.5; }
+
+    /* ── About (cream) ──────────────────────────────── */
+    #about { background: var(--cream); padding: 5.5rem 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: .625rem; }
+    .about-ph-main {
+      grid-column: 1/-1; aspect-ratio: 16/9;
+      border-radius: var(--r); overflow: hidden;
+    }
+    .about-ph-sm { aspect-ratio: 4/3; border-radius: var(--r); overflow: hidden; }
+    .about-ph-main img, .about-ph-sm img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      font-weight: 800; letter-spacing: -.025em; color: #1a1a17; line-height: 1.18;
+      margin-bottom: 1.125rem;
+    }
+    .about-h2 em { font-style: italic; color: var(--primary); }
+    .about-p  { font-size: .925rem; color: rgba(0,0,0,.58); line-height: 1.78; margin-bottom: .75rem; }
+    .about-p strong { color: rgba(0,0,0,.82); font-weight: 600; }
+    .about-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; margin: .875rem 0 1.5rem; }
+    .about-list li {
+      font-size: .875rem; color: rgba(0,0,0,.62);
+      display: flex; align-items: flex-start; gap: .5rem; line-height: 1.55;
+    }
+    .about-list li::before { content: '→'; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: .05rem; }
+
+    /* ── For Who (cream) ────────────────────────────── */
+    #forwho { background: var(--cream); padding: 5.5rem 0; }
+
+    /* ── Guarantee (dark) ───────────────────────────── */
+    #guarantee { background: var(--bg); padding: 5.5rem 0; }
+    .guar-grid { display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; }
+    .guar-h2 {
+      font-size: clamp(1.875rem, 3.8vw, 2.875rem);
+      font-weight: 800; letter-spacing: -.04em; line-height: 1.12; color: #fff;
+      margin-bottom: 1rem;
+    }
+    .guar-h2 em { color: var(--green); font-style: italic; }
+    .guar-sub { font-size: 1rem; color: var(--muted); line-height: 1.78; margin-bottom: 2rem; max-width: 52ch; }
+    .guar-checks { display: flex; flex-direction: column; gap: .75rem; }
+    .guar-check-item { display: flex; align-items: center; gap: .875rem; font-size: .9rem; color: rgba(255,255,255,.82); }
+    .guar-ck { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: rgba(122,184,122,.14); border: 1px solid rgba(122,184,122,.25); display: flex; align-items: center; justify-content: center; color: var(--green); font-size: .72rem; font-weight: 700; flex-shrink: 0; }
+    .guar-icon { width: 13rem; height: 13rem; object-fit: contain; }
+
+    /* ── Programs (dark) ────────────────────────────── */
+    #programs { background: var(--bg); padding: 5.5rem 0; }
+    .prog-tabs { display: flex; gap: .5rem; justify-content: center; margin-top: 2.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 9999px; padding: .3rem; width: fit-content; margin-inline: auto; }
+    .prog-tab { padding: .65rem 1.5rem; border-radius: 9999px; font-size: .9rem; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--muted); transition: background .2s, color .2s; display: flex; align-items: center; gap: .5rem; }
+    .prog-tab.active { background: #fff; color: #161c16; }
+    .prog-tab-desc { text-align: center; font-size: .82rem; color: var(--muted); margin-top: .875rem; }
+    .prog-panel { display: none; margin-top: 2.5rem; border: 1px solid var(--border); border-radius: var(--r); padding: 2.5rem; }
+    .prog-panel.active { display: block; }
+    .prog-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; }
+    .prog-h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.25rem; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: .875rem; letter-spacing: -.02em; }
+    .prog-sub { font-size: .95rem; color: var(--muted); line-height: 1.7; max-width: 40rem; margin-bottom: 1.25rem; }
+    .prog-pill { display: inline-flex; align-items: center; gap: .375rem; background: rgba(122,184,122,.12); border: 1px solid rgba(122,184,122,.25); border-radius: 9999px; padding: .35rem .9rem; font-size: .8rem; color: var(--green); font-weight: 600; margin-bottom: 2rem; }
+    .prog-feats { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 2rem; }
+    .prog-feat { display: flex; align-items: flex-start; gap: .875rem; background: var(--bg2); border: 1px solid var(--border); border-radius: calc(var(--r) - 2px); padding: 1.125rem 1.25rem; }
+    .prog-feat-ck { color: var(--green); font-size: 1rem; font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
+    .prog-feat-title { font-size: .9rem; font-weight: 700; color: #fff; margin-bottom: .2rem; }
+    .prog-feat-sub { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+    .prog-note { font-size: .8rem; color: rgba(255,255,255,.35); line-height: 1.6; display: flex; align-items: flex-start; gap: .5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); margin-bottom: 2rem; }
+
+    /* ── Testimonials (dark) ────────────────────────── */
+    #testimonials { background: var(--bg); padding: 5.5rem 0; }
+    .testi-scroll {
+      display: flex; gap: 1rem;
+      overflow-x: auto; padding: .25rem 0 .25rem;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      margin-top: 2.5rem;
+    }
+    .testi-scroll::-webkit-scrollbar { display: none; }
+    .testi-card {
+      flex-shrink: 0; width: 280px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: .75rem; overflow: hidden;
+      scroll-snap-align: start;
+      display: flex; flex-direction: column;
+    }
+    .testi-img {
+      width: 100%; aspect-ratio: 4/3; overflow: hidden;
+      position: relative; flex-shrink: 0;
+    }
+    .testi-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .testi-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,16,10,.82) 0%, rgba(10,16,10,.18) 50%, transparent 100%);
+    }
+    .testi-img-name {
+      position: absolute; bottom: .75rem; left: .875rem; right: .875rem;
+      font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.75);
+      letter-spacing: .01em;
+    }
+    .testi-body { padding: 1rem 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .testi-stars { color: #f0a500; font-size: .8rem; letter-spacing: .04em; margin-bottom: .625rem; }
+    .testi-headline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .975rem; font-weight: 700; line-height: 1.35;
+      color: #fff; margin-bottom: .625rem;
+    }
+    .testi-headline::before { content: '\201C'; }
+    .testi-headline::after  { content: '\201D'; }
+    .testi-text {
+      flex: 1; font-size: .815rem; line-height: 1.72;
+      color: rgba(255,255,255,.52);
+    }
+    /* nav row */
+    .testi-nav {
+      display: flex; align-items: center; justify-content: center;
+      gap: .875rem; margin-top: 1.75rem;
+    }
+    .testi-arrow {
+      width: 2rem; height: 2rem; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.16);
+      background: transparent; color: rgba(255,255,255,.55);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+      transition: border-color .18s, color .18s, transform .14s cubic-bezier(.16,1,.3,1);
+    }
+    .testi-arrow:hover { border-color: rgba(255,255,255,.4); color: #fff; transform: scale(1.08); }
+    .testi-arrow:active { transform: scale(.96); }
+    .testi-arrow svg { width: .7rem; height: .7rem; }
+    .testi-dots { display: flex; gap: .375rem; align-items: center; }
+    .testi-dot { width: .425rem; height: .425rem; border-radius: 50%; background: rgba(255,255,255,.18); cursor: pointer; transition: background .2s, width .2s; }
+    .testi-dot.on { background: var(--green); width: 1.25rem; border-radius: 9999px; }
+
+    /* ── FAQ (dark) ─────────────────────────────────── */
+    #faq { background: var(--cream); padding: 5.5rem 0; border-top: 1px solid rgba(0,0,0,.07); }
+    .faq-item { border-bottom: 1px solid rgba(0,0,0,.1); }
+    .faq-btn {
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 0; gap: 1rem; text-align: left;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .95rem; font-weight: 600; color: rgba(0,0,0,.8);
+      transition: color .2s;
+    }
+    .faq-btn:hover { color: #1a1a17; }
+    .faq-icon {
+      flex-shrink: 0; width: 1rem; height: 1rem;
+      opacity: .5;
+      transition: transform .2s ease, opacity .2s;
+    }
+    .faq-btn:hover .faq-icon { opacity: .8; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); opacity: .8; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .38s cubic-bezier(.16,1,.3,1); }
+    .faq-ai { padding: 0 0 1.125rem; font-size: .9rem; color: var(--muted-dark); line-height: 1.75; }
+
+    /* ── Final CTA ─────────────────────────────────── */
+    #cta { background: var(--primary); padding: 6.5rem 0; text-align: center; }
+    .cta-h2 {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 800; letter-spacing: -.035em; line-height: 1.09; color: #fff;
+      max-width: 13ch; margin: 0 auto 1.375rem;
+    }
+    .cta-h2 em { font-style: italic; }
+    .cta-sub { font-size: .975rem; color: rgba(255,255,255,.68); max-width: 44ch; margin: 0 auto 2.25rem; line-height: 1.72; }
+
+    /* ── Animations ─────────────────────────────────── */
+    @keyframes navIn    { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+    @keyframes heroUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+    #nav { animation: navIn .5s ease both; }
+    .hero-avail { animation: heroUp .6s .15s ease both; }
+    .hero-h1    { animation: heroUp .7s .28s ease both; }
+    .hero-sub   { animation: heroUp .6s .44s ease both; }
+    .hero-text > .btn { animation: heroUp .6s .56s ease both; }
+    .hero-trust { animation: heroUp .6s .68s ease both; }
+    .hero-photos { animation: heroUp .8s .5s ease both; }
+
+    .anim { opacity:0; transform:translateY(28px); transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
+    .anim.in { opacity:1; transform:none; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    footer { background: var(--bg3); padding: 3.5rem 0 2rem; border-top: 1px solid var(--border); }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem; margin-bottom: 2.75rem;
+    }
+    .footer-logo { height: 2.25rem; width: auto; display: block; margin-bottom: 1.125rem; filter: brightness(0) invert(1); opacity: .7; }
+    .footer-desc { font-size: .85rem; color: rgba(255,255,255,.42); line-height: 1.75; max-width: 26ch; margin-bottom: 1.125rem; }
+    .footer-contact { display: flex; flex-direction: column; gap: .375rem; }
+    .footer-contact a { font-size: .82rem; color: rgba(255,255,255,.42); text-decoration: none; transition: color .2s; }
+    .footer-contact a:hover { color: #fff; }
+    .footer-col-h { font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .875rem; }
+    .footer-nav { display: flex; flex-direction: column; gap: .475rem; }
+    .footer-nav a { font-size: .875rem; color: rgba(255,255,255,.48); text-decoration: none; transition: color .2s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-social { display: flex; gap: .625rem; margin-bottom: 1.5rem; }
+    .footer-si {
+      width: 2.125rem; height: 2.125rem; border-radius: 50%;
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.45); font-size: .8rem; text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .footer-si:hover { background: rgba(255,255,255,.12); color: #fff; }
+    .footer-legal { display: flex; gap: 1rem; }
+    .footer-legal a { font-size: .78rem; color: rgba(255,255,255,.32); text-decoration: none; transition: color .2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.65); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .footer-copy { font-size: .775rem; color: rgba(255,255,255,.28); }
+    .footer-wm { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.375rem; font-weight: 800; letter-spacing: -.015em; color: rgba(122,184,122,.1); }
+
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 960px) {
+      .ch-grid, .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .guar-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .guar-icon { margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      #nav { padding: 0 1.25rem; }
+      .mob-btn { display: flex; }
+      .btn-nav-cta { display: none; }
+      .prog-feats { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hero-photos { flex-wrap: wrap; gap: .5rem; }
+      .hero-ph { width: calc(50% - .5rem); margin-left: 0 !important; }
+      .sol-g3 { grid-template-columns: 1fr; }
+      .sol-g2 { flex-direction: column; }
+      .sol-g2 .sol-card { flex: 1 1 auto; }
+      .vs-table { grid-template-columns: 1.5fr 1fr; }
+      .vs-h-them, .vs-them { display: none; }
+      .parati-table { grid-template-columns: 1fr; }
+      .parati-head-no { border-left: none; border-top: 1px solid rgba(0,0,0,.07); }
+      .parati-no { border-left: none; }
+      .num-strip { grid-template-columns: 1fr 1fr; }
+      .num-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .num-item:nth-child(3), .num-item:last-child { border-bottom: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .prog-panel { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#hero">
+    <img src="brand_assets/logo-6.svg" alt="Cães com Simão" class="nav-logo" width="38" height="38">
+  </a>
+  <div class="nav-links">
+    <a href="#hero" class="nav-active">Casa</a>
+    <a href="treino.html">Treino</a>
+    <a href="comunidade.html">Comunidade Grátis</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="avaliacao.html" class="btn-nav-cta">Avaliação Gratuita</a>
+    <button class="mob-btn" aria-label="Menu" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mob-menu">
+  <a href="index.html" onclick="closeMenu()" class="nav-active">Casa</a>
+  <a href="treino.html" onclick="closeMenu()">Treino</a>
+  <a href="comunidade.html" onclick="closeMenu()">Comunidade</a>
+  <a href="contacto.html"    onclick="closeMenu()">Contacto</a>
+  <a href="avaliacao.html" class="mob-cta" onclick="closeMenu()">Avaliação Gratuita</a>
+</div>
+
+<script>
+function toggleMenu(btn) {
+  const isOpen = btn.classList.toggle('open');
+  document.getElementById('mob-menu').classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  document.querySelector('.mob-btn').classList.remove('open');
+  document.getElementById('mob-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+<!-- ══ HERO ═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-avail">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style="opacity:.6"><path d="M4 2L7 5L4 8" stroke="#7ab87a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Vagas ainda disponíveis
+    </div>
+    <h1 class="hero-h1">
+      Provavelmente não sou o primeiro treinador que tentas. Mas vou ser o último.
+    </h1>
+    <p class="hero-sub">Ajudo donos de cães agressivos, reativos, ou fora de controlo a transformar o comportamento do seu cão, para que possam finalmente viver sem stress.</p>
+    <a href="mailto:simao@caescomsimao.com" class="btn btn-g" style="font-size:.975rem;padding:.85rem 2rem;">
+      Marcar Avaliação Gratuita &nbsp;→
+    </a>
+    <div class="hero-trust">
+      <div class="hero-trust-item">
+        <div class="hero-trust-icon">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 5.5L4 7.5L8 3" stroke="#7ab87a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Centenas de vidas transformadas
+      </div>
+      <div class="hero-trust-item">
+        <div class="hero-trust-icon">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 5.5L4 7.5L8 3" stroke="#7ab87a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Método provado e que funciona
+      </div>
+      <div class="hero-trust-item">
+        <div class="hero-trust-icon">
+          <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 5.5L4 7.5L8 3" stroke="#7ab87a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Treino feito para o mundo real
+      </div>
+    </div>
+  </div>
+  <div class="hero-photos">
+    <div class="hero-ph">
+      <img src="brand_assets/Hero%20Card%20Images/hero-card-img-1.jpg" alt="Treino com cão">
+    </div>
+    <div class="hero-ph">
+      <img src="brand_assets/Hero%20Card%20Images/hero-card-img-2.jpg" alt="Cão em treino">
+    </div>
+    <div class="hero-ph">
+      <img src="brand_assets/Hero%20Card%20Images/hero-card-img-3.jpg" alt="Simão com cão">
+    </div>
+    <div class="hero-ph">
+      <img src="brand_assets/Hero%20Card%20Images/hero-card-img-4.jpg" alt="Cão e dono">
+    </div>
+  </div>
+</section>
+
+<!-- ══ NÚMEROS ════════════════════════════════════════ -->
+<section id="numeros">
+  <div class="wrap">
+    <div class="num-strip">
+      <div class="num-item">
+        <div class="num-val"><em>+</em>300</div>
+        <div class="num-lbl">Cães trabalhados</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">100<em>%</em></div>
+        <div class="num-lbl">Garantia de reembolso</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">2<em>–</em>3</div>
+        <div class="num-lbl">Semanas até ver primeiros resultados</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">0<em>€</em></div>
+        <div class="num-lbl">Risco financeiro para ti</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHALLENGES (cream) ═════════════════════════════ -->
+<section id="challenges">
+  <div class="wrap">
+    <div class="ch-grid">
+
+      <!-- Left: heading -->
+      <div>
+        <div class="tag tag-l" style="margin-bottom:1.25rem;">+ Desafios</div>
+        <h2 class="ch-left-head">O teu cão torna os passeios um pesadelo?</h2>
+        <p class="ch-left-sub">Muitos donos adoram os seus cães, mas os passeios do dia-a-dia acabam por se tornar stressantes e isolantes.</p>
+      </div>
+
+      <!-- Right: dark card -->
+      <div class="ch-card">
+        <div class="ch-item">
+          <div class="ch-item-head">
+            <span class="ch-num">01</span>
+            <span class="ch-title">Sais de casa…</span>
+          </div>
+          <div class="ch-text">E começas logo a olhar à volta. A calcular rotas. A evitar certas horas. Porque sabes o que pode acontecer.</div>
+        </div>
+        <div class="ch-item">
+          <div class="ch-item-head">
+            <span class="ch-num">02</span>
+            <span class="ch-title">Depois acontece.</span>
+          </div>
+          <div class="ch-text">Puxar. Ladrar. Reagir. Pessoas a olhar. Tu, envergonhado e sem saber o que fazer.</div>
+        </div>
+        <div class="ch-item" style="border-bottom:none;">
+          <div class="ch-item-head">
+            <span class="ch-num">03</span>
+            <span class="ch-title">E aos poucos começas a evitar tudo.</span>
+          </div>
+          <div class="ch-text">Parques. Outros cães. Horários normais. A tua vida começa a encolher por causa dele.</div>
+        </div>
+        <div class="ch-quote">
+          <p class="ch-qt">É aparece aquela sensação: culpa. Como se não estivesses a dar ao teu cão a vida que ele merece. Não estás sozinho. E isto não é culpa tua.</p>
+        </div>
+        <div class="ch-card-footer">Não estás sozinho. <em>Isto não é culpa tua.</em></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOLUTIONS (dark) ═══════════════════════════════ -->
+<section id="solutions">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Soluções</div>
+      <h2 class="sec-h2-d">Como resolvemos isto?</h2>
+      <p class="sec-sub-d">Nada complicado. Só um processo claro que já transformou centenas de cães e donos.</p>
+    </div>
+
+    <div class="sol-g3">
+      <div class="sol-card">
+        <div class="sol-num">01</div>
+        <div class="sol-title">Avaliação</div>
+        <div class="sol-text">Falo contigo e percebo exactamente o que se passa com o teu cão.</div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">02</div>
+        <div class="sol-title">Plano claro</div>
+        <div class="sol-text">Dou-te um plano simples, adaptado a ti e ao teu cão especificamente.</div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">03</div>
+        <div class="sol-title">Treino contigo</div>
+        <div class="sol-text">Aprendes a trabalhar com o teu cão no dia-a-dia real.</div>
+      </div>
+    </div>
+    <div class="sol-g2">
+      <div class="sol-card">
+        <div class="sol-num">04</div>
+        <div class="sol-title">Resultados fora de casa</div>
+        <div class="sol-text">Não é só bonito em treino, funciona na vida real, na rua.</div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-num">05</div>
+        <div class="sol-title">Resultados duradouros</div>
+        <div class="sol-text">O objectivo é não voltares a ter este problema.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIFFERENTIATION (cream) ════════════════════════ -->
+<section id="diff">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin-bottom:0;">
+      <div class="tag tag-l" style="margin-bottom:1.25rem;">+ Porquê eu?</div>
+      <h2 class="sec-h2-l">Não é mais um treino.<br>É uma mudança real.</h2>
+      <p class="sec-sub-l">A maioria dos métodos trata o sintoma. Nós tratamos a raiz.</p>
+    </div>
+
+    <div class="vs-table">
+      <div class="vs-h-label">O que comparamos</div>
+      <div class="vs-h-us">✦ &nbsp;Cães com Simão</div>
+      <div class="vs-h-them">Treino Convencional</div>
+
+      <div class="vs-label">Foco do trabalho</div>
+      <div class="vs-us"><span class="vs-ok">✓</span> Emoção e raiz do problema</div>
+      <div class="vs-them"><span class="vs-x">✗</span> Obediência superficial</div>
+
+      <div class="vs-label">Onde funciona</div>
+      <div class="vs-us"><span class="vs-ok">✓</span> No mundo real, em qualquer lugar</div>
+      <div class="vs-them"><span class="vs-x">✗</span> Só em ambiente controlado</div>
+
+      <div class="vs-label">Apoio durante o processo</div>
+      <div class="vs-us"><span class="vs-ok">✓</span> Diário por WhatsApp</div>
+      <div class="vs-them"><span class="vs-x">✗</span> Sessão pontual, sem seguimento</div>
+
+      <div class="vs-label">Garantia</div>
+      <div class="vs-us"><span class="vs-ok">✓</span> 100% reembolso se não resultar</div>
+      <div class="vs-them"><span class="vs-x">✗</span> Sem qualquer garantia</div>
+
+      <div class="vs-label" style="border-bottom:none;">Cães difíceis / reativos</div>
+      <div class="vs-us" style="border-bottom:none;"><span class="vs-ok">✓</span> Especialidade do método</div>
+      <div class="vs-them" style="border-bottom:none;"><span class="vs-x">✗</span> Derivação ou desistência</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROGRAMS (dark) ════════════════════════════════ -->
+<section id="programs">
+  <div class="wrap">
+
+    <div class="sec-head">
+      <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Programas</div>
+      <h2 class="sec-h2-d">O mesmo método.<br>A tua escolha de formato.</h2>
+      <p class="sec-sub-d">Presencial ou online, o programa é idêntico. O que muda é onde fazes o trabalho.</p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="prog-tabs">
+      <button class="prog-tab active" onclick="switchTab('presencial', this)">🐾 Presencial (30 dias)</button>
+      <button class="prog-tab" onclick="switchTab('online', this)">💻 Online (60 dias)</button>
+    </div>
+    <p class="prog-tab-desc" id="prog-tab-desc">Sessões no terreno, no teu ambiente, com o teu cão</p>
+
+    <!-- Presencial panel -->
+    <div class="prog-panel active" id="panel-presencial">
+      <div class="prog-label">Presencial</div>
+      <h3 class="prog-h2">30 dias. Resultados reais.</h3>
+      <p class="prog-sub">Trabalhamos juntos no campo, no teu ambiente, com o teu cão, ao teu ritmo. Acompanhamento directo do início ao fim.</p>
+      <div class="prog-pill">⏱ 30 dias · 5 sessões 1-a-1</div>
+      <div class="prog-feats">
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">5 sessões presenciais</div><div class="prog-feat-sub">Treino individual no teu ambiente real</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Roadmap personalizado</div><div class="prog-feat-sub">Plano estruturado para o teu cão específico</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Biblioteca de vídeos</div><div class="prog-feat-sub">Todos os exercícios em vídeo para praticares</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Suporte WhatsApp</div><div class="prog-feat-sub">Acesso directo durante os 30 dias</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">15–30 min por dia</div><div class="prog-feat-sub">Sem precisar de horas livres</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Garantia de resultado</div><div class="prog-feat-sub">Se não funcionar, não pagas</div></div></div>
+      </div>
+      <div class="prog-note">✦ Baseado em Viana do Castelo. Sessões presenciais em todo o país, deslocações a casa apenas na região de Viana. Primeira sessão é sempre uma avaliação gratuita, sem compromisso.</div>
+      <a href="mailto:simao@caescomsimao.com" class="btn btn-wo">Marcar avaliação gratuita →</a>
+    </div>
+
+    <!-- Online panel -->
+    <div class="prog-panel" id="panel-online">
+      <div class="prog-label">Online</div>
+      <h3 class="prog-h2">60 dias. No teu ritmo.</h3>
+      <p class="prog-sub">O mesmo método, adaptado para fazeres em casa. Vídeos, plano semanal e suporte directo, sem precisar de te deslocar.</p>
+      <div class="prog-pill">⏱ 60 dias · suporte diário</div>
+      <div class="prog-feats">
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Plano semana a semana</div><div class="prog-feat-sub">Exercícios progressivos adaptados ao teu cão</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Videochamadas de acompanhamento</div><div class="prog-feat-sub">Feedback directo sobre o teu progresso</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Biblioteca de vídeos</div><div class="prog-feat-sub">Todos os exercícios em vídeo para praticares</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Suporte WhatsApp</div><div class="prog-feat-sub">Acesso directo durante os 60 dias</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Funciona em qualquer país</div><div class="prog-feat-sub">Sem necessidade de deslocações</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Garantia de resultado</div><div class="prog-feat-sub">Se não funcionar, não pagas</div></div></div>
+      </div>
+      <div class="prog-note">✦ Disponível para qualquer país, trabalho com portugueses emigrantes e brasileiros. Primeira sessão é sempre uma avaliação gratuita, sem compromisso.</div>
+      <a href="mailto:simao@caescomsimao.com" class="btn btn-wo">Marcar avaliação gratuita →</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.prog-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.prog-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+  document.getElementById('prog-tab-desc').textContent = id === 'presencial'
+    ? 'Sessões no terreno, no teu ambiente, com o teu cão'
+    : 'Vídeos, plano e suporte, sem sair de casa';
+}
+</script>
+
+<!-- ══ FOR WHO (cream) ════════════════════════════════ -->
+<section id="forwho">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin-bottom:0;">
+      <div class="tag tag-l" style="margin-bottom:1.25rem;">+ Este programa é para ti?</div>
+      <h2 class="sec-h2-l" style="text-align:center;">Honestidade antes de tudo.</h2>
+      <p class="sec-sub-l" style="text-align:center;">Este programa não é para todos, e tudo bem. Aqui está a verdade sem rodeios.</p>
+    </div>
+
+    <div class="parati-table">
+      <div class="parati-head-yes">É para ti se…</div>
+      <div class="parati-head-no">Não é para ti se…</div>
+
+      <div class="parati-yes">Tens um cão reativo e queres resolver o problema a sério</div>
+      <div class="parati-no">Queres uma solução rápida sem esforço</div>
+
+      <div class="parati-yes">Isto já dura há meses ou anos e estás farto</div>
+      <div class="parati-no">Não estás disposto a aplicar o que é ensinado</div>
+
+      <div class="parati-yes">Estás disposto a fazer o trabalho e a ser consistente</div>
+      <div class="parati-no">Procuras apenas a opção mais barata</div>
+
+      <div class="parati-yes" style="border-bottom:none;">Estás farto de tentar coisas diferentes sem resultado</div>
+      <div class="parati-no" style="border-bottom:none;">Acreditas em métodos extremos ou sem estrutura</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GUARANTEE (dark) ═══════════════════════════════ -->
+<section id="guarantee">
+  <div class="wrap">
+    <div class="guar-grid">
+
+      <div>
+        <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Sem Risco</div>
+        <h2 class="guar-h2">Se não funcionar,<br><em>não pagas. Simples.</em></h2>
+        <p class="guar-sub">Se não conseguir melhorar o comportamento do teu cão, devolvo o dinheiro na totalidade. Sem letras pequenas, sem condições escondidas. O objetivo é um só: resultados reais e uma vida mais tranquila com o teu cão.</p>
+        <ul class="guar-checks">
+          <li class="guar-check-item"><div class="guar-ck">✓</div> Sem risco financeiro para ti</li>
+          <li class="guar-check-item"><div class="guar-ck">✓</div> Método testado em mais de 300 cães</li>
+          <li class="guar-check-item"><div class="guar-ck">✓</div> 100% reembolso garantido se não houver resultado</li>
+        </ul>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <img src="brand_assets/guarantee-icon.png" alt="Garantia" class="guar-icon">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT (cream) ══════════════════════════════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <!-- Photos -->
+      <div class="about-photos">
+        <div class="about-ph-main">
+          <img src="https://placehold.co/800x450/2c5f2e/c8dfca" alt="Simão com Lyon">
+        </div>
+        <div class="about-ph-sm">
+          <img src="https://placehold.co/400x300/1e4220/c8dfca" alt="Treino em grupo">
+        </div>
+        <div class="about-ph-sm">
+          <img src="https://placehold.co/400x300/3d7a40/eef5ef" alt="Cão equilibrado">
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <div class="tag tag-l" style="margin-bottom:1.25rem;">+ História</div>
+        <h2 class="about-h2">Como tudo <em>começou</em></h2>
+        <p class="about-p">O que começou como um problema com um cão acabou por se tornar numa missão: ajudar donos e cães a viverem melhor no dia-a-dia.</p>
+        <p class="about-p"><strong>Tudo começou com um Pastor Alemão chamado Lyon.</strong> Passei por vários treinadores em Portugal e só piorou. Recusei aceitar que não havia solução.</p>
+        <ul class="about-list">
+          <li>Tudo começou com um Pastor Alemão chamado Lyon</li>
+          <li>Passei por vários treinadores em Portugal… e só piorou</li>
+          <li>Comecei a estudar e a procurar respostas fora de Portugal</li>
+          <li>Trabalhei com centenas de cães problemáticos em Inglaterra, e hoje o Lyon vive calmo e equilibrado</li>
+        </ul>
+        <a href="mailto:simao@caescomsimao.com" class="btn btn-do">Ver história completa →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS (dark) ════════════════════════════ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Testemunhos</div>
+      <h2 class="sec-h2-d">O que dizem os donos</h2>
+      <p class="sec-sub-d">Vê como cães que antes eram reativos, agressivos ou impossíveis de passear hoje vivem de forma calma com os seus donos.</p>
+    </div>
+
+    <div class="testi-scroll" id="tscroll">
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="https://placehold.co/560x420/1e4220/7ab87a" alt="Maria S.">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Dono: Maria S. · Cão: Nadi</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">Finalmente encontrámos a solução.</div>
+          <div class="testi-text">Depois de três treinadores, já não acreditava que fosse possível. A reactividade da Nadi com outros cães era enorme. Com o Simão foi tudo mais simples do que esperava. Em poucas semanas comecei a ver resultados reais.</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="https://placehold.co/560x420/243024/7ab87a" alt="João P.">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Dono: João P. · Cão: Nessa</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">Em poucos dias já pensávamos desistir dela.</div>
+          <div class="testi-text">Adoptámos a Nessa e rapidamente começaram os problemas: reactividade, ladrar constante, ansiedade. Chegámos a considerar devolvê-la. Com a ajuda do Simão, em poucas semanas tudo mudou.</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="https://placehold.co/560x420/1a3a1c/7ab87a" alt="Ana R.">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Dono: Ana R. · Cão: Turco</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">Nunca pensei que fosse possível passear sem stress.</div>
+          <div class="testi-text">O Turco era agressivo a outros cães e a pessoas desconhecidas. O Simão percebeu imediatamente o que estava a acontecer e deu-nos ferramentas concretas que funcionam mesmo na rua.</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="https://placehold.co/560x420/1f281f/7ab87a" alt="Pedro M.">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Dono: Pedro M. · Cão: Rex</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">Completamente diferente de todos os outros treinadores.</div>
+          <div class="testi-text">Tentei métodos online, treinos em grupo, nada funcionou como o Simão. Logo na primeira sessão percebeu o problema a fundo e começou a trabalhar de verdade.</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="https://placehold.co/560x420/2c3e2c/7ab87a" alt="Sofia R.">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Dono: Sofia R. · Cão: Mel</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">Desde a primeira sessão senti que era diferente.</div>
+          <div class="testi-text">Tentei dois treinadores antes e nenhum resultou. Com o Simão foi diferente desde o primeiro dia, percebeu imediatamente o que estava a falhar e explicou-me tudo com clareza.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-nav">
+      <button class="testi-arrow" id="tprev" aria-label="Anterior">
+        <svg viewBox="0 0 12 12" fill="none"><path d="M7.5 2L3.5 6L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="testi-dots" id="tdots">
+        <div class="testi-dot on"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
+      </div>
+      <button class="testi-arrow" id="tnext" aria-label="Próximo">
+        <svg viewBox="0 0 12 12" fill="none"><path d="M4.5 2L8.5 6L4.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ (dark) ═════════════════════════════════════ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag tag-l" style="margin-bottom:1.25rem;">+ FAQ</div>
+      <h2 class="sec-h2-l">Perguntas frequentes</h2>
+      <p class="sec-sub-l">Ainda tens dúvidas? Aqui tens respostas às perguntas mais comuns.</p>
+    </div>
+
+    <div style="max-width:42rem;margin:0 auto;">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>Já tentei outros treinadores e não funcionou. Porque é que isto vai ser diferente?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">Porque a maioria dos treinadores trabalha os comportamentos que vê, e ignora o que está por baixo. Eu trabalho o estado emocional do cão. É por isso que resultados que pareciam impossíveis acontecem aqui.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>O meu cão é muito agressivo / muito velho / um caso perdido?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">Já trabalhei com cães que ninguém mais conseguiu ajudar. Não é uma questão do teu cão, é uma questão de método. A pergunta certa é: estás disposto a tentar uma abordagem diferente?</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>Não tenho muito tempo. Vai dar muito trabalho?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">Apenas 15 a 30 minutos por dia. O programa é desenhado para se encaixar na tua rotina, não para criar uma rotina nova à volta do treino.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>Sou eu que preciso de treino ou é o meu cão?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">Provavelmente os dois, e isso é bom. Quando percebes o que está a acontecer dentro do teu cão, tudo fica mais simples. Não precisas de ser especialista. Precisas de saber o quê, o quando e o porquê.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>Que métodos utilizas?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">Trabalho cada cão como um caso individual. Não me limito a uma única abordagem, uso o que funciona para aquele cão específico, naquela fase específica. O objectivo é sempre o estado emocional primeiro, comportamento depois.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>Quanto custa?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">A avaliação inicial é gratuita e sem compromisso. O preço é definido depois de perceber a situação do teu cão, não há valores fixos porque não há casos iguais. E se não funcionar, devolvo o dinheiro na totalidade.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>O que acontece se não vir resultados?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">Devolvo o dinheiro. Sem letras pequenas, sem condições estranhas. Se não conseguir melhorar o comportamento do teu cão, não faz sentido ficares com menos dinheiro e com o mesmo problema.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
+          <span>Funciona para reatividade a cães, a pessoas, e outros?</span>
+          <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-ai">Funciona para tudo. A reactividade, seja a cães, a pessoas, a bicicletas, a barulhos, tem sempre a mesma raiz: um estado emocional que o cão não sabe gerir. É isso que trabalhamos.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ═══════════════════════════════════════ -->
+<section id="cta">
+  <div class="wrap">
+    <h2 class="cta-h2">Uma vida normal com o teu cão <em>é possível.</em></h2>
+    <p class="cta-sub">Não tens de continuar assim. Vamos falar sobre o teu cão e perceber juntos o melhor caminho.</p>
+    <a href="mailto:simao@caescomsimao.com" class="btn btn-wo" style="font-size:.975rem;padding:.85rem 2rem;">
+      Marcar Avaliação Gratuita →
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="brand_assets/logo-6.svg" alt="Cães com Simão" class="footer-logo">
+        <p class="footer-desc">Ajudo donos de cães agressivos, reativos, ou fora de controlo a transformar o comportamento do seu cão.</p>
+        <div class="footer-contact">
+          <a href="mailto:simao@caescomsimao.com">simao@caescomsimao.com</a>
+          <a href="tel:+351887789878">+351 887 789 878</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-h">Índice</div>
+        <nav class="footer-nav">
+          <a href="#hero">Home</a>
+          <a href="#solutions">Como Funciona</a>
+          <a href="#testimonials">Testemunhos</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer-col-h">Escola</div>
+        <nav class="footer-nav">
+          <a href="#about">Acerca de Mim</a>
+          <a href="#testimonials">Sucessos</a>
+          <a href="#diff">Porquê eu?</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer-col-h">Redes Sociais</div>
+        <div class="footer-social">
+          <a href="#" class="footer-si" aria-label="YouTube">▶</a>
+          <a href="#" class="footer-si" aria-label="Instagram">◉</a>
+          <a href="#" class="footer-si" aria-label="Spotify">♪</a>
+        </div>
+        <div class="footer-col-h">Legal</div>
+        <div class="footer-legal">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Cães com Simão · Direitos Reservados</p>
+      <p class="footer-wm">Cães com Simão</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* FAQ */
+  function tfaq(btn) {
+    const item = btn.closest('.faq-item');
+    const ans  = item.querySelector('.faq-answer');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-answer').style.maxHeight = '0';
+      el.querySelector('.faq-btn').setAttribute('aria-expanded','false');
+    });
+    if (!open) {
+      item.classList.add('open');
+      ans.style.maxHeight = ans.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded','true');
+    }
+  }
+
+  /* Testimonial slider */
+  const ts = document.getElementById('tscroll');
+  const td = document.querySelectorAll('.testi-dot');
+  if (ts && td.length) {
+    const cardW = () => ts.querySelector('.testi-card').offsetWidth + 16;
+    const goTo = i => ts.scrollTo({left: i * cardW(), behavior:'smooth'});
+    ts.addEventListener('scroll', () => {
+      const i = Math.round(ts.scrollLeft / cardW());
+      td.forEach((d,j) => d.classList.toggle('on', i === j));
+    }, {passive:true});
+    td.forEach((d,i) => d.addEventListener('click', () => goTo(i)));
+    const prev = document.getElementById('tprev');
+    const next = document.getElementById('tnext');
+    if (prev) prev.addEventListener('click', () => {
+      const i = Math.round(ts.scrollLeft / cardW());
+      goTo(Math.max(0, i - 1));
+    });
+    if (next) next.addEventListener('click', () => {
+      const i = Math.round(ts.scrollLeft / cardW());
+      goTo(Math.min(td.length - 1, i + 1));
+    });
+  }
+
+  /* Nav opacity on scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 30
+      ? 'rgba(22,28,22,.98)'
+      : 'rgba(24,30,24,.92)';
+  }, {passive:true});
+</script>
+<script>
+(function() {
+  // Elements to animate on scroll — stagger siblings in same parent
+  const SELECTORS = [
+    '.sec-head',
+    '.sol-card', '.prog-feat', '.faq-item',
+    '.testi-card',
+    '.ch-card', '.guar-grid > div', '.about-grid > div',
+    '.prog-panel > .prog-label, .prog-panel > .prog-h2, .prog-panel > .prog-sub, .prog-panel > .prog-pill',
+    '.vs-table', '.parati-table', '.num-item',
+    '#cta > .wrap > *',
+  ];
+
+  const els = document.querySelectorAll(SELECTORS.join(','));
+
+  // Assign stagger delay based on position among animated siblings
+  const parentSeen = new Map();
+  els.forEach(el => {
+    const p = el.parentElement;
+    const idx = parentSeen.get(p) ?? 0;
+    parentSeen.set(p, idx + 1);
+    el.style.transitionDelay = idx * 0.08 + 's';
+    el.classList.add('anim');
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
