@@ -29,7 +29,8 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
     h1,h2,h3,h4 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 700; }
 
@@ -72,12 +73,12 @@
     .mob-menu.open a:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:.54s; }
     .mob-menu a:hover { color: #fff; }
     .mob-menu a.nav-active { color: var(--green); }
-    .mob-menu .mob-cta { margin-top: .5rem; background: #fff; color: #161c16; padding: .75rem 2rem; border-radius: 9999px; font-size: 1rem; font-weight: 700; }
+    .mob-menu .mob-cta { margin-top: .5rem; background: #fff; color: #161c16; padding: .9rem 2.5rem; border-radius: 9999px; font-size: 1.5rem; font-weight: 700; }
 
     /* ── Hero ─────────────────────────────────────────── */
     #hero { background: var(--bg); padding: 9rem 0 6.5rem; position: relative; text-align: center; }
-    #hero::before { content: ''; position: absolute; inset: 0; background: url('brand_assets/hero-bg-img.jpg') center/cover no-repeat; opacity: .04; pointer-events: none; }
-    .hero-t-h1 { font-size: clamp(2.75rem, 6vw, 4.75rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.07; color: #fff; margin: 1.5rem auto 1.5rem; max-width: 18ch; position: relative; z-index: 1; }
+    #hero::before { content: ''; position: absolute; inset: 0; background: url('brand_assets/hero-bg-img.jpg') center/cover no-repeat; opacity: .06; pointer-events: none; }
+    .hero-t-h1 { font-size: clamp(2.25rem, 5.5vw, 3.5rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.07; color: #fff; margin: 1.5rem auto 1.5rem; max-width: 18ch; position: relative; z-index: 1; }
     .hero-t-sub { font-size: 1.075rem; color: var(--muted); line-height: 1.75; max-width: 46ch; margin: 0 auto 2.5rem; position: relative; z-index: 1; }
     .hero-t-ctas { display: flex; justify-content: center; gap: .875rem; flex-wrap: wrap; position: relative; z-index: 1; }
     .hero-trust { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
@@ -147,7 +148,7 @@
 
     /* ── Testemunhos ──────────────────────────────────── */
     #testi { background: var(--cream); padding: 5.5rem 0; }
-    .testi-scroll { display: flex; gap: 1rem; overflow-x: auto; padding: .25rem 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; margin-top: 2.5rem; }
+    .testi-scroll { display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden; padding: .25rem 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; overscroll-behavior: contain; margin-top: 2.5rem; }
     .testi-scroll::-webkit-scrollbar { display: none; }
     .testi-card { flex-shrink: 0; width: 280px; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; }
     .testi-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; position: relative; flex-shrink: 0; }
@@ -181,8 +182,8 @@
 
     /* ── História ─────────────────────────────────────── */
     #historia { background: var(--cream); padding: 6.5rem 0; border-top: 1px solid rgba(0,0,0,.07); }
-    .historia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .historia-img-wrap { border-radius: calc(var(--r) * 2); overflow: hidden; aspect-ratio: 4/5; position: relative; }
+    .historia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .historia-img-wrap { border-radius: calc(var(--r) * 2); overflow: hidden; aspect-ratio: 4/5; position: sticky; top: 6rem; }
     .historia-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .historia-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(170deg, rgba(62,94,58,.18) 0%, transparent 55%); }
     .historia-h { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; letter-spacing: -.035em; color: #1a1a17; line-height: 1.15; margin-bottom: 1.5rem; }
@@ -200,14 +201,14 @@
 
     /* ── Garantia ─────────────────────────────────────── */
     #garantia { background: var(--bg); padding: 6.5rem 0; }
-    .guar-inner { display: grid; grid-template-columns: auto 1fr; gap: 5rem; align-items: center; }
-    .guar-icon { width: 13rem; height: 13rem; object-fit: contain; }
-    .guar-h { font-size: clamp(1.875rem, 3.8vw, 2.875rem); font-weight: 800; letter-spacing: -.04em; color: #fff; line-height: 1.12; margin-bottom: 1rem; }
-    .guar-h em { color: var(--green); font-style: italic; }
-    .guar-p { font-size: 1rem; color: var(--muted); line-height: 1.78; margin-bottom: 2rem; max-width: 52ch; }
-    .guar-list { display: flex; flex-direction: column; gap: .75rem; }
-    .guar-item { display: flex; align-items: center; gap: .875rem; font-size: .9rem; color: rgba(255,255,255,.82); }
-    .guar-check { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: rgba(122,184,122,.14); border: 1px solid rgba(122,184,122,.25); display: flex; align-items: center; justify-content: center; color: var(--green); font-size: .72rem; font-weight: 700; flex-shrink: 0; }
+    .guar-grid { display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; }
+    .guar-icon { width: 16rem; height: 16rem; object-fit: contain; }
+    .guar-h2 { font-size: clamp(1.875rem, 3.8vw, 2.875rem); font-weight: 800; letter-spacing: -.04em; color: #fff; line-height: 1.12; margin-bottom: 1rem; }
+    .guar-h2 em { color: var(--green); font-style: italic; }
+    .guar-sub { font-size: 1rem; color: var(--muted); line-height: 1.78; margin-bottom: 2rem; max-width: 52ch; }
+    .guar-checks { display: flex; flex-direction: column; gap: .75rem; }
+    .guar-check-item { display: flex; align-items: center; gap: .875rem; font-size: .9rem; color: rgba(255,255,255,.82); }
+    .guar-ck { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: rgba(122,184,122,.14); border: 1px solid rgba(122,184,122,.25); display: flex; align-items: center; justify-content: center; color: var(--green); font-size: .72rem; font-weight: 700; flex-shrink: 0; }
 
     /* ── FAQ ──────────────────────────────────────────── */
     #faq { background: var(--cream); padding: 5.5rem 0; border-top: 1px solid rgba(0,0,0,.07); }
@@ -271,8 +272,8 @@
 
     /* ── Responsive ───────────────────────────────────── */
     @media (max-width: 1024px) {
-      .vs-table { grid-template-columns: 1.5fr 1fr; }
-      .vs-h-them, .vs-them { display: none; }
+      .vs-table { grid-template-columns: 1fr 1fr; }
+      .vs-h-label, .vs-label { display: none; }
     }
     @media (max-width: 960px) {
       .nav-links { display: none; }
@@ -292,9 +293,8 @@
       .num-strip { grid-template-columns: 1fr 1fr; }
       .num-item { border-right: none; border-bottom: 1px solid var(--border); }
       .num-item:nth-child(3), .num-item:last-child { border-bottom: none; }
-      .guar-inner { grid-template-columns: 1fr; text-align: center; }
+      .guar-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .guar-icon { margin: 0 auto; }
-      .guar-list { align-items: flex-start; max-width: 28rem; margin: 0 auto; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
@@ -356,14 +356,7 @@ function closeMenu() {
     <p class="hero-t-sub">Programa presencial de 30 dias ou online de 60 dias, o mesmo método, no teu formato.</p>
     <div class="hero-t-ctas">
       <a href="#programa" class="btn btn-g" style="font-size:.975rem;padding:.85rem 2rem;">Ver programas →</a>
-      <a href="mailto:simao@caescomsimao.com" class="btn btn-wo" style="font-size:.975rem;padding:.85rem 2rem;">Avaliação gratuita</a>
-    </div>
-    <div class="hero-trust">
-      <span class="hero-trust-item">Garantia de reembolso</span>
-      <span class="hero-trust-dot"></span>
-      <span class="hero-trust-item">+300 cães trabalhados</span>
-      <span class="hero-trust-dot"></span>
-      <span class="hero-trust-item">Resultados em 2–3 semanas</span>
+      <a href="avaliacao.html" class="btn btn-wo" style="font-size:.975rem;padding:.85rem 2rem;">Avaliação gratuita</a>
     </div>
   </div>
 </section>
@@ -374,7 +367,7 @@ function closeMenu() {
     <div class="num-strip">
       <div class="num-item">
         <div class="num-val"><em>+</em>300</div>
-        <div class="num-lbl">Cães trabalhados</div>
+        <div class="num-lbl">Cães treinados</div>
       </div>
       <div class="num-item">
         <div class="num-val">100<em>%</em></div>
@@ -382,7 +375,7 @@ function closeMenu() {
       </div>
       <div class="num-item">
         <div class="num-val">2<em>–</em>3</div>
-        <div class="num-lbl">Semanas até ver primeiros resultados</div>
+        <div class="num-lbl">Semanas até aos primeiros resultados</div>
       </div>
       <div class="num-item">
         <div class="num-val">0<em>€</em></div>
@@ -414,7 +407,7 @@ function closeMenu() {
       <div class="dor-moment">
         <div class="dor-moment-num">03</div>
         <div class="dor-moment-h">"Será que já é tarde demais?"</div>
-        <p class="dor-moment-p">Seja um cão que tens desde pequeno ou um resgate com um passado complicado, já vimos de tudo. <strong style="color:rgba(255,255,255,.82)">Isto não é culpa tua. E o teu cão não está perdido.</strong></p>
+        <p class="dor-moment-p">Seja um cão que tens desde pequeno ou um resgate com um passado complicado, já vi de tudo. <strong style="color:rgba(255,255,255,.82)">E o teu cão não está perdido.</strong></p>
       </div>
     </div>
 
@@ -468,7 +461,7 @@ function closeMenu() {
       <div>
         <div class="prog-label">Formato Presencial</div>
         <h3 class="prog-h2">30 dias que<br>mudam tudo.</h3>
-        <p class="prog-sub">Trabalhamos juntos no terreno. Baseado em Viana do Castelo, com sessões em todo o país e visitas domiciliárias apenas na região de Viana.</p>
+        <p class="prog-sub">Trabalho contigo no terreno. Baseado em Viana do Castelo, com sessões em todo o país e visitas domiciliárias apenas na região de Viana.</p>
         <div class="prog-pill">📍 Presencial</div>
         <div class="prog-pill" style="margin-left:.5rem;">30 dias</div>
       </div>
@@ -507,8 +500,8 @@ function closeMenu() {
       <div class="prog-feats">
         <div class="prog-feat">
           <div class="prog-feat-icon">🎥</div>
-          <div class="prog-feat-h">8 sessões por videochamada</div>
-          <p class="prog-feat-p">Uma sessão por semana, ao teu ritmo, com análise de vídeos do teu cão em situação real.</p>
+          <div class="prog-feat-h">Videochamadas de acompanhamento</div>
+          <p class="prog-feat-p">Feedback directo sobre o teu progresso.</p>
         </div>
         <div class="prog-feat">
           <div class="prog-feat-icon">🗺️</div>
@@ -544,12 +537,12 @@ function closeMenu() {
       <div class="como-step">
         <div class="como-num">1</div>
         <h3 class="como-h">Avaliação gratuita</h3>
-        <p class="como-p">Marcas uma chamada de 30 minutos. Falamos sobre o teu cão, o historial, e o que está a acontecer.</p>
+        <p class="como-p">Marcas uma chamada de 30 minutos. Falo contigo sobre o teu cão, o historial, e o que está a acontecer.</p>
       </div>
       <div class="como-step">
         <div class="como-num">2</div>
         <h3 class="como-h">Plano à medida</h3>
-        <p class="como-p">Com base na avaliação, definimos o programa certo, presencial ou online, e o roadmap completo.</p>
+        <p class="como-p">Com base na avaliação, defino o programa certo, presencial ou online, e o roadmap completo.</p>
       </div>
       <div class="como-step">
         <div class="como-num">3</div>
@@ -571,7 +564,7 @@ function closeMenu() {
     <div class="sec-head">
       <div class="tag tag-d" style="margin-bottom:1.25rem;">+ A diferença</div>
       <h2 class="sec-h2-d">Não é mais um treino.<br>É uma mudança real.</h2>
-      <p class="sec-sub-d">A maioria dos métodos trata o sintoma. Nós tratamos a raiz.</p>
+      <p class="sec-sub-d">A maioria dos métodos trata o sintoma. Eu trato a raiz.</p>
     </div>
 
     <div class="vs-table">
@@ -702,7 +695,7 @@ function closeMenu() {
     <div class="sec-head">
       <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Este programa é para ti?</div>
       <h2 class="sec-h2-d">Honestidade antes de tudo.</h2>
-      <p class="sec-sub-d">Este programa não é para todos, e tudo bem. Aqui está a verdade sem rodeios.</p>
+      <p class="sec-sub-d">Este programa não é para todos, e não há mal nenhum nisso.</p>
     </div>
 
     <div class="parati-table">
@@ -733,10 +726,12 @@ function closeMenu() {
       </div>
       <div>
         <div class="tag tag-l" style="margin-bottom:1.5rem;">+ Quem sou eu</div>
-        <h2 class="historia-h">Comecei a trabalhar com cães porque os métodos que existiam não faziam sentido.</h2>
-        <p class="historia-p">Sempre fui apaixonado por cães, mas quando comecei a estudar comportamento canino a sério, percebi que a maioria do que era ensinado era obediência disfarçada de treino. Cão senta, cão fica, cão recebe petisco. O problema é que isso não resolve nada quando o cão está em pânico, reactivo, ou perdido emocionalmente.</p>
-        <p class="historia-p">Desenvolvi um método baseado no estado emocional do cão, não no que ele faz, mas no que ele sente. É mais lento do que parece, mas os resultados duram. Não há truques, não há choques, não há submissão forçada.</p>
-        <p class="historia-p">Trabalhei com mais de 300 cães, muitos deles considerados "sem solução". Nenhum está perdido. Nenhum.</p>
+        <h2 class="historia-h">Comecei a trabalhar com cães porque nada do que via fazia sentido.</h2>
+        <p class="historia-p">Não comecei a trabalhar com cães porque queria ensinar "senta" ou "dá a pata". Comecei porque o meu próprio cão estava a sofrer… e ninguém me conseguia explicar realmente porquê.</p>
+        <p class="historia-p">O Lyon, o meu Pastor Alemão, levou-me por um caminho que mudou completamente a forma como vejo comportamento canino. Passei por treinadores, métodos, opiniões e promessas rápidas. Algumas coisas ajudavam momentaneamente. Muitas pioravam o problema. E no meio de tudo isso comecei a perceber uma coisa: a maioria das pessoas está focada na obediência. Poucas tentam perceber o estado emocional do cão.</p>
+        <p class="historia-p">Foi aí que comecei a estudar obsessivamente comportamento canino, stress, reatividade, sistema nervoso, comunicação e psicologia canina. Não para "controlar" cães, mas para finalmente os compreender.</p>
+        <p class="historia-p">Hoje, depois de trabalhar com centenas de cães em Inglaterra, muitos deles considerados "difíceis", "reativos" ou "sem solução", continuo a acreditar na mesma coisa: nenhum cão acorda a tentar ser um problema. Na maioria das vezes, temos apenas cães perdidos, stressados, inseguros ou completamente incompreendidos.</p>
+        <p class="historia-p">O meu trabalho não é criar cães perfeitos. É ajudar donos a perceberem o que realmente se passa com o seu cão, criar estrutura sem pressão desnecessária, e construir uma relação onde ambos conseguem finalmente respirar. Porque quando mudamos o estado emocional do cão, o comportamento começa naturalmente a mudar também.</p>
         <div class="historia-sig">Simão, Cães com Simão</div>
       </div>
     </div>
@@ -746,19 +741,19 @@ function closeMenu() {
 <!-- ══ GARANTIA ════════════════════════════════════════ -->
 <section id="garantia">
   <div class="wrap">
-    <div class="guar-inner">
+    <div class="guar-grid">
       <div>
-        <img src="brand_assets/guarantee-icon.png" alt="Garantia" class="guar-icon">
+        <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Sem Risco</div>
+        <h2 class="guar-h2">Fazes o trabalho,<br><em>devolvo o dinheiro.</em></h2>
+        <p class="guar-sub">Enquanto fizeres o trabalho e conseguires provar que seguiste o que te ensinei, devolvo-te o dinheiro. Só quero ajudar cães e donos a viverem melhor, e ser pago por isso. Não estou aqui para perder o teu tempo nem o teu dinheiro.</p>
+        <ul class="guar-checks">
+          <li class="guar-check-item"><div class="guar-ck">✓</div> Devolvo o dinheiro se fizeres o trabalho e não houver resultado</li>
+          <li class="guar-check-item"><div class="guar-ck">✓</div> Método testado em mais de 300 cães</li>
+          <li class="guar-check-item"><div class="guar-ck">✓</div> Não estou aqui para perder o teu tempo nem o teu dinheiro</li>
+        </ul>
       </div>
-      <div>
-        <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Sem risco</div>
-        <h2 class="guar-h">Se não funcionar,<br><em>não pagas. Simples.</em></h2>
-        <p class="guar-p">Se não conseguir melhorar o comportamento do teu cão, devolvo o dinheiro na totalidade. Sem letras pequenas, sem condições escondidas. O objetivo é um só: resultados reais e uma vida mais tranquila com o teu cão.</p>
-        <div class="guar-list">
-          <div class="guar-item"><div class="guar-check">✓</div>Sem risco financeiro para ti</div>
-          <div class="guar-item"><div class="guar-check">✓</div>Método testado em mais de 300 cães</div>
-          <div class="guar-item"><div class="guar-check">✓</div>100% reembolso garantido se não houver resultado</div>
-        </div>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <img src="brand_assets/guarantee-icon.png" alt="Garantia" class="guar-icon">
       </div>
     </div>
   </div>
@@ -814,21 +809,21 @@ function closeMenu() {
           <span>Quanto custa?</span>
           <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-ai">A avaliação inicial é gratuita e sem compromisso. O preço é definido depois de perceber a situação do teu cão, não há valores fixos porque não há casos iguais. E se não funcionar, devolvo o dinheiro na totalidade.</div></div>
+        <div class="faq-answer"><div class="faq-ai">A avaliação inicial é gratuita e sem compromisso. O preço é definido depois de perceber a situação do teu cão, não há valores fixos porque não há casos iguais. E se fizeres o trabalho e não houver resultado, devolvo o dinheiro.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
           <span>O que acontece se não vir resultados?</span>
           <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-ai">Devolvo o dinheiro. Sem letras pequenas, sem condições estranhas. Se não conseguir melhorar o comportamento do teu cão, não faz sentido ficares com menos dinheiro e com o mesmo problema.</div></div>
+        <div class="faq-answer"><div class="faq-ai">Se fizeres o trabalho e conseguires mostrar que seguiste o que te ensinei, devolvo o dinheiro. Não estou aqui para me aproveitar de ninguém. Só quero ajudar cães e donos a viverem melhor, e ser pago por isso.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
           <span>Funciona para reatividade a cães, a pessoas, e outros?</span>
           <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-ai">Funciona para tudo. A reactividade, seja a cães, a pessoas, a bicicletas, a barulhos, tem sempre a mesma raiz: um estado emocional que o cão não sabe gerir. É isso que trabalhamos.</div></div>
+        <div class="faq-answer"><div class="faq-ai">Funciona para tudo. A reactividade, seja a cães, a pessoas, a bicicletas, a barulhos, tem sempre a mesma raiz: um estado emocional que o cão não sabe gerir. É isso que trabalho.</div></div>
       </div>
     </div>
     </div>
@@ -840,7 +835,7 @@ function closeMenu() {
   <div class="wrap-sm" style="text-align:center;position:relative;z-index:1;">
     <h2 class="cta-h">Uma vida normal com o teu cão é possível.</h2>
     <p class="cta-sub">Não tens de continuar assim. Vamos falar sobre o teu cão e perceber o melhor caminho juntos.</p>
-    <a href="mailto:simao@caescomsimao.com" class="cta-btn">Marcar Avaliação Gratuita →</a>
+    <a href="avaliacao.html" class="cta-btn">Marcar Avaliação Gratuita →</a>
   </div>
 </section>
 
@@ -853,7 +848,6 @@ function closeMenu() {
         <p class="footer-desc">Ajudo donos de cães agressivos, reativos, ou fora de controlo a transformar o comportamento do seu cão.</p>
         <div class="footer-contact">
           <a href="mailto:simao@caescomsimao.com">simao@caescomsimao.com</a>
-          <a href="tel:+351887789878">+351 887 789 878</a>
         </div>
       </div>
       <div>
@@ -956,7 +950,7 @@ function closeMenu() {
   const SELECTORS = [
     '.sec-head', '.prog-step', '.como-step', '.testi-card',
     '.prog-panel.active > *', '.vs-table', '.parati-table',
-    '.historia-grid > *', '.num-item', '.guar-inner > *',
+    '.historia-grid > *', '.num-item', '.guar-grid > *',
     '.faq-item', '#cta .wrap-sm > *', '.dor-moment', '.dor-truth', '.dor-header',
   ];
   const els = document.querySelectorAll(SELECTORS.join(','));

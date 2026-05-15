@@ -29,7 +29,8 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
@@ -133,8 +134,8 @@
     .mob-menu a.nav-active { color: var(--green); }
     .mob-menu .mob-cta {
       margin-top: .5rem; background: #fff; color: #161c16;
-      padding: .75rem 2rem; border-radius: 9999px;
-      font-size: 1rem; font-weight: 700;
+      padding: .9rem 2.5rem; border-radius: 9999px;
+      font-size: 1.5rem; font-weight: 700;
     }
 
     /* ── Hero ───────────────────────────────────────── */
@@ -142,7 +143,7 @@
     #hero::before {
       content: ''; position: absolute; inset: 0;
       background: url('brand_assets/hero-bg-img.jpg') center/cover no-repeat;
-      opacity: 0.04; pointer-events: none; z-index: 0;
+      opacity: 0.06; pointer-events: none; z-index: 0;
     }
     .hero-text { position: relative; z-index: 1; }
     .hero-text {
@@ -150,7 +151,7 @@
       max-width: 52rem; margin: 0 auto;
     }
     .hero-h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2.25rem, 5.5vw, 3.5rem);
       font-weight: 800; letter-spacing: -.03em; line-height: 1.1;
       color: #fff; margin-bottom: 1.25rem;
     }
@@ -198,12 +199,18 @@
       border-radius: 1rem; overflow: hidden;
       border: 2.5px solid rgba(255,255,255,.88);
       box-shadow: 0 8px 40px rgba(0,0,0,.55);
+      transition: transform .55s cubic-bezier(.25,.46,.45,.94), box-shadow .55s ease, z-index 0s;
+      cursor: pointer;
     }
     .hero-ph + .hero-ph { margin-left: -100px; }
     .hero-ph:nth-child(1) { z-index: 1; transform: rotate(-5deg); }
     .hero-ph:nth-child(2) { z-index: 2; transform: rotate(3deg); }
     .hero-ph:nth-child(3) { z-index: 3; transform: rotate(-2deg); }
     .hero-ph:nth-child(4) { z-index: 4; transform: rotate(5deg); }
+    .hero-ph:nth-child(1):hover { transform: rotate(-5deg) scale(1.07); z-index: 10; box-shadow: 0 16px 56px rgba(0,0,0,.7); }
+    .hero-ph:nth-child(2):hover { transform: rotate(3deg) scale(1.07);  z-index: 10; box-shadow: 0 16px 56px rgba(0,0,0,.7); }
+    .hero-ph:nth-child(3):hover { transform: rotate(-2deg) scale(1.07); z-index: 10; box-shadow: 0 16px 56px rgba(0,0,0,.7); }
+    .hero-ph:nth-child(4):hover { transform: rotate(5deg) scale(1.07);  z-index: 10; box-shadow: 0 16px 56px rgba(0,0,0,.7); }
     .hero-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ── Challenges (cream) ─────────────────────────── */
@@ -299,8 +306,8 @@
 
     /* ── About (cream) ──────────────────────────────── */
     #about { background: var(--cream); padding: 5.5rem 0; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: .625rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: .625rem; position: sticky; top: 6rem; }
     .about-ph-main {
       grid-column: 1/-1; aspect-ratio: 16/9;
       border-radius: var(--r); overflow: hidden;
@@ -338,7 +345,7 @@
     .guar-checks { display: flex; flex-direction: column; gap: .75rem; }
     .guar-check-item { display: flex; align-items: center; gap: .875rem; font-size: .9rem; color: rgba(255,255,255,.82); }
     .guar-ck { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: rgba(122,184,122,.14); border: 1px solid rgba(122,184,122,.25); display: flex; align-items: center; justify-content: center; color: var(--green); font-size: .72rem; font-weight: 700; flex-shrink: 0; }
-    .guar-icon { width: 13rem; height: 13rem; object-fit: contain; }
+    .guar-icon { width: 16rem; height: 16rem; object-fit: contain; }
 
     /* ── Programs (dark) ────────────────────────────── */
     #programs { background: var(--bg); padding: 5.5rem 0; }
@@ -363,9 +370,10 @@
     #testimonials { background: var(--bg); padding: 5.5rem 0; }
     .testi-scroll {
       display: flex; gap: 1rem;
-      overflow-x: auto; padding: .25rem 0 .25rem;
+      overflow-x: auto; overflow-y: hidden; padding: .25rem 0 .25rem;
       scrollbar-width: none; -webkit-overflow-scrolling: touch;
       scroll-snap-type: x mandatory;
+      overscroll-behavior: contain;
       margin-top: 2.5rem;
     }
     .testi-scroll::-webkit-scrollbar { display: none; }
@@ -518,8 +526,8 @@
       .sol-g3 { grid-template-columns: 1fr; }
       .sol-g2 { flex-direction: column; }
       .sol-g2 .sol-card { flex: 1 1 auto; }
-      .vs-table { grid-template-columns: 1.5fr 1fr; }
-      .vs-h-them, .vs-them { display: none; }
+      .vs-table { grid-template-columns: 1fr 1fr; }
+      .vs-h-label, .vs-label { display: none; }
       .parati-table { grid-template-columns: 1fr; }
       .parati-head-no { border-left: none; border-top: 1px solid rgba(0,0,0,.07); }
       .parati-no { border-left: none; }
@@ -582,7 +590,7 @@ function closeMenu() {
       Provavelmente não sou o primeiro treinador que tentas. Mas vou ser o último.
     </h1>
     <p class="hero-sub">Ajudo donos de cães agressivos, reativos, ou fora de controlo a transformar o comportamento do seu cão, para que possam finalmente viver sem stress.</p>
-    <a href="mailto:simao@caescomsimao.com" class="btn btn-g" style="font-size:.975rem;padding:.85rem 2rem;">
+    <a href="avaliacao.html" class="btn btn-g" style="font-size:.975rem;padding:.85rem 2rem;">
       Marcar Avaliação Gratuita &nbsp;→
     </a>
     <div class="hero-trust">
@@ -634,7 +642,7 @@ function closeMenu() {
     <div class="num-strip">
       <div class="num-item">
         <div class="num-val"><em>+</em>300</div>
-        <div class="num-lbl">Cães trabalhados</div>
+        <div class="num-lbl">Cães treinados</div>
       </div>
       <div class="num-item">
         <div class="num-val">100<em>%</em></div>
@@ -642,7 +650,7 @@ function closeMenu() {
       </div>
       <div class="num-item">
         <div class="num-val">2<em>–</em>3</div>
-        <div class="num-lbl">Semanas até ver primeiros resultados</div>
+        <div class="num-lbl">Semanas até aos primeiros resultados</div>
       </div>
       <div class="num-item">
         <div class="num-val">0<em>€</em></div>
@@ -678,7 +686,7 @@ function closeMenu() {
             <span class="ch-num">02</span>
             <span class="ch-title">Depois acontece.</span>
           </div>
-          <div class="ch-text">Puxar. Ladrar. Reagir. Pessoas a olhar. Tu, envergonhado e sem saber o que fazer.</div>
+          <div class="ch-text">O teu cão começa a puxar, a ladrar, a reagir. Pessoas a olhar. Tu, envergonhado e sem saber o que fazer.</div>
         </div>
         <div class="ch-item" style="border-bottom:none;">
           <div class="ch-item-head">
@@ -688,9 +696,8 @@ function closeMenu() {
           <div class="ch-text">Parques. Outros cães. Horários normais. A tua vida começa a encolher por causa dele.</div>
         </div>
         <div class="ch-quote">
-          <p class="ch-qt">É aparece aquela sensação: culpa. Como se não estivesses a dar ao teu cão a vida que ele merece. Não estás sozinho. E isto não é culpa tua.</p>
+          <p class="ch-qt">É aparece aquela sensação: culpa. Como se não estivesses a dar ao teu cão a vida que ele merece.</p>
         </div>
-        <div class="ch-card-footer">Não estás sozinho. <em>Isto não é culpa tua.</em></div>
       </div>
 
     </div>
@@ -702,7 +709,7 @@ function closeMenu() {
   <div class="wrap">
     <div class="sec-head">
       <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Soluções</div>
-      <h2 class="sec-h2-d">Como resolvemos isto?</h2>
+      <h2 class="sec-h2-d">Como resolvo isto?</h2>
       <p class="sec-sub-d">Nada complicado. Só um processo claro que já transformou centenas de cães e donos.</p>
     </div>
 
@@ -744,7 +751,7 @@ function closeMenu() {
     <div class="sec-head" style="text-align:center;margin-bottom:0;">
       <div class="tag tag-l" style="margin-bottom:1.25rem;">+ Porquê eu?</div>
       <h2 class="sec-h2-l">Não é mais um treino.<br>É uma mudança real.</h2>
-      <p class="sec-sub-l">A maioria dos métodos trata o sintoma. Nós tratamos a raiz.</p>
+      <p class="sec-sub-l">A maioria dos métodos trata o sintoma. Eu trato a raiz.</p>
     </div>
 
     <div class="vs-table">
@@ -796,7 +803,7 @@ function closeMenu() {
     <div class="prog-panel active" id="panel-presencial">
       <div class="prog-label">Presencial</div>
       <h3 class="prog-h2">30 dias. Resultados reais.</h3>
-      <p class="prog-sub">Trabalhamos juntos no campo, no teu ambiente, com o teu cão, ao teu ritmo. Acompanhamento directo do início ao fim.</p>
+      <p class="prog-sub">Trabalho contigo no campo, no teu ambiente, com o teu cão, ao teu ritmo. Acompanhamento directo do início ao fim.</p>
       <div class="prog-pill">⏱ 30 dias · 5 sessões 1-a-1</div>
       <div class="prog-feats">
         <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">5 sessões presenciais</div><div class="prog-feat-sub">Treino individual no teu ambiente real</div></div></div>
@@ -804,10 +811,10 @@ function closeMenu() {
         <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Biblioteca de vídeos</div><div class="prog-feat-sub">Todos os exercícios em vídeo para praticares</div></div></div>
         <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Suporte WhatsApp</div><div class="prog-feat-sub">Acesso directo durante os 30 dias</div></div></div>
         <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">15–30 min por dia</div><div class="prog-feat-sub">Sem precisar de horas livres</div></div></div>
-        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Garantia de resultado</div><div class="prog-feat-sub">Se não funcionar, não pagas</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Garantia de resultado</div><div class="prog-feat-sub">Devolvo se fizeres o trabalho sem resultado</div></div></div>
       </div>
       <div class="prog-note">✦ Baseado em Viana do Castelo. Sessões presenciais em todo o país, deslocações a casa apenas na região de Viana. Primeira sessão é sempre uma avaliação gratuita, sem compromisso.</div>
-      <a href="mailto:simao@caescomsimao.com" class="btn btn-wo">Marcar avaliação gratuita →</a>
+      <a href="avaliacao.html" class="btn btn-wo">Marcar avaliação gratuita →</a>
     </div>
 
     <!-- Online panel -->
@@ -822,10 +829,10 @@ function closeMenu() {
         <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Biblioteca de vídeos</div><div class="prog-feat-sub">Todos os exercícios em vídeo para praticares</div></div></div>
         <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Suporte WhatsApp</div><div class="prog-feat-sub">Acesso directo durante os 60 dias</div></div></div>
         <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Funciona em qualquer país</div><div class="prog-feat-sub">Sem necessidade de deslocações</div></div></div>
-        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Garantia de resultado</div><div class="prog-feat-sub">Se não funcionar, não pagas</div></div></div>
+        <div class="prog-feat"><span class="prog-feat-ck">✓</span><div><div class="prog-feat-title">Garantia de resultado</div><div class="prog-feat-sub">Devolvo se fizeres o trabalho sem resultado</div></div></div>
       </div>
       <div class="prog-note">✦ Disponível para qualquer país, trabalho com portugueses emigrantes e brasileiros. Primeira sessão é sempre uma avaliação gratuita, sem compromisso.</div>
-      <a href="mailto:simao@caescomsimao.com" class="btn btn-wo">Marcar avaliação gratuita →</a>
+      <a href="avaliacao.html" class="btn btn-wo">Marcar avaliação gratuita →</a>
     </div>
 
   </div>
@@ -849,7 +856,7 @@ function switchTab(id, btn) {
     <div class="sec-head" style="text-align:center;margin-bottom:0;">
       <div class="tag tag-l" style="margin-bottom:1.25rem;">+ Este programa é para ti?</div>
       <h2 class="sec-h2-l" style="text-align:center;">Honestidade antes de tudo.</h2>
-      <p class="sec-sub-l" style="text-align:center;">Este programa não é para todos, e tudo bem. Aqui está a verdade sem rodeios.</p>
+      <p class="sec-sub-l" style="text-align:center;">Este programa não é para todos, e não há mal nenhum nisso.</p>
     </div>
 
     <div class="parati-table">
@@ -878,12 +885,12 @@ function switchTab(id, btn) {
 
       <div>
         <div class="tag tag-d" style="margin-bottom:1.25rem;">+ Sem Risco</div>
-        <h2 class="guar-h2">Se não funcionar,<br><em>não pagas. Simples.</em></h2>
-        <p class="guar-sub">Se não conseguir melhorar o comportamento do teu cão, devolvo o dinheiro na totalidade. Sem letras pequenas, sem condições escondidas. O objetivo é um só: resultados reais e uma vida mais tranquila com o teu cão.</p>
+        <h2 class="guar-h2">Fazes o trabalho,<br><em>devolvo o dinheiro.</em></h2>
+        <p class="guar-sub">Enquanto fizeres o trabalho e conseguires provar que seguiste o que te ensinei, devolvo-te o dinheiro. Só quero ajudar cães e donos a viverem melhor, e ser pago por isso. Não estou aqui para perder o teu tempo nem o teu dinheiro.</p>
         <ul class="guar-checks">
-          <li class="guar-check-item"><div class="guar-ck">✓</div> Sem risco financeiro para ti</li>
+          <li class="guar-check-item"><div class="guar-ck">✓</div> Devolvo o dinheiro se fizeres o trabalho e não houver resultado</li>
           <li class="guar-check-item"><div class="guar-ck">✓</div> Método testado em mais de 300 cães</li>
-          <li class="guar-check-item"><div class="guar-ck">✓</div> 100% reembolso garantido se não houver resultado</li>
+          <li class="guar-check-item"><div class="guar-ck">✓</div> Não estou aqui para perder o teu tempo nem o teu dinheiro</li>
         </ul>
       </div>
 
@@ -916,16 +923,12 @@ function switchTab(id, btn) {
       <!-- Text -->
       <div>
         <div class="tag tag-l" style="margin-bottom:1.25rem;">+ História</div>
-        <h2 class="about-h2">Como tudo <em>começou</em></h2>
-        <p class="about-p">O que começou como um problema com um cão acabou por se tornar numa missão: ajudar donos e cães a viverem melhor no dia-a-dia.</p>
-        <p class="about-p"><strong>Tudo começou com um Pastor Alemão chamado Lyon.</strong> Passei por vários treinadores em Portugal e só piorou. Recusei aceitar que não havia solução.</p>
-        <ul class="about-list">
-          <li>Tudo começou com um Pastor Alemão chamado Lyon</li>
-          <li>Passei por vários treinadores em Portugal… e só piorou</li>
-          <li>Comecei a estudar e a procurar respostas fora de Portugal</li>
-          <li>Trabalhei com centenas de cães problemáticos em Inglaterra, e hoje o Lyon vive calmo e equilibrado</li>
-        </ul>
-        <a href="mailto:simao@caescomsimao.com" class="btn btn-do">Ver história completa →</a>
+        <h2 class="about-h2">Comecei a trabalhar com cães porque <em>nada do que via fazia sentido.</em></h2>
+        <p class="about-p">Não comecei a trabalhar com cães porque queria ensinar "senta" ou "dá a pata". Comecei porque o meu próprio cão estava a sofrer… e ninguém me conseguia explicar realmente porquê.</p>
+        <p class="about-p">O Lyon, o meu Pastor Alemão, levou-me por um caminho que mudou completamente a forma como vejo comportamento canino. Passei por treinadores, métodos, opiniões e promessas rápidas. Algumas coisas ajudavam momentaneamente. Muitas pioravam o problema. E no meio de tudo isso comecei a perceber uma coisa: a maioria das pessoas está focada na obediência. Poucas tentam perceber o estado emocional do cão.</p>
+        <p class="about-p">Foi aí que comecei a estudar obsessivamente comportamento canino, stress, reatividade, sistema nervoso, comunicação e psicologia canina. Não para "controlar" cães, mas para finalmente os compreender.</p>
+        <p class="about-p">Hoje, depois de trabalhar com centenas de cães em Inglaterra, muitos deles considerados "difíceis", "reativos" ou "sem solução", continuo a acreditar na mesma coisa: nenhum cão acorda a tentar ser um problema. Na maioria das vezes, temos apenas cães perdidos, stressados, inseguros ou completamente incompreendidos.</p>
+        <p class="about-p">O meu trabalho não é criar cães perfeitos. É ajudar donos a perceberem o que realmente se passa com o seu cão, criar estrutura sem pressão desnecessária, e construir uma relação onde ambos conseguem finalmente respirar. Porque quando mudamos o estado emocional do cão, o comportamento começa naturalmente a mudar também.</p>
       </div>
 
     </div>
@@ -1072,21 +1075,21 @@ function switchTab(id, btn) {
           <span>Quanto custa?</span>
           <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-ai">A avaliação inicial é gratuita e sem compromisso. O preço é definido depois de perceber a situação do teu cão, não há valores fixos porque não há casos iguais. E se não funcionar, devolvo o dinheiro na totalidade.</div></div>
+        <div class="faq-answer"><div class="faq-ai">A avaliação inicial é gratuita e sem compromisso. O preço é definido depois de perceber a situação do teu cão, não há valores fixos porque não há casos iguais. E se fizeres o trabalho e não houver resultado, devolvo o dinheiro.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
           <span>O que acontece se não vir resultados?</span>
           <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-ai">Devolvo o dinheiro. Sem letras pequenas, sem condições estranhas. Se não conseguir melhorar o comportamento do teu cão, não faz sentido ficares com menos dinheiro e com o mesmo problema.</div></div>
+        <div class="faq-answer"><div class="faq-ai">Se fizeres o trabalho e conseguires mostrar que seguiste o que te ensinei, devolvo o dinheiro. Não estou aqui para me aproveitar de ninguém. Só quero ajudar cães e donos a viverem melhor, e ser pago por isso.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-btn" onclick="tfaq(this)" aria-expanded="false">
           <span>Funciona para reatividade a cães, a pessoas, e outros?</span>
           <svg class="faq-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-ai">Funciona para tudo. A reactividade, seja a cães, a pessoas, a bicicletas, a barulhos, tem sempre a mesma raiz: um estado emocional que o cão não sabe gerir. É isso que trabalhamos.</div></div>
+        <div class="faq-answer"><div class="faq-ai">Funciona para tudo. A reactividade, seja a cães, a pessoas, a bicicletas, a barulhos, tem sempre a mesma raiz: um estado emocional que o cão não sabe gerir. É isso que trabalho.</div></div>
       </div>
     </div>
   </div>
@@ -1097,7 +1100,7 @@ function switchTab(id, btn) {
   <div class="wrap">
     <h2 class="cta-h2">Uma vida normal com o teu cão <em>é possível.</em></h2>
     <p class="cta-sub">Não tens de continuar assim. Vamos falar sobre o teu cão e perceber juntos o melhor caminho.</p>
-    <a href="mailto:simao@caescomsimao.com" class="btn btn-wo" style="font-size:.975rem;padding:.85rem 2rem;">
+    <a href="avaliacao.html" class="btn btn-wo" style="font-size:.975rem;padding:.85rem 2rem;">
       Marcar Avaliação Gratuita →
     </a>
   </div>
@@ -1112,7 +1115,6 @@ function switchTab(id, btn) {
         <p class="footer-desc">Ajudo donos de cães agressivos, reativos, ou fora de controlo a transformar o comportamento do seu cão.</p>
         <div class="footer-contact">
           <a href="mailto:simao@caescomsimao.com">simao@caescomsimao.com</a>
-          <a href="tel:+351887789878">+351 887 789 878</a>
         </div>
       </div>
 
