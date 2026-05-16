@@ -323,6 +323,121 @@
       .footer-grid { grid-template-columns: 1fr; }
       .vs-table { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ── Antes & Depois ───────────────────────────────────── */
+    #antes-depois {
+      position: relative;
+      background: var(--bg);
+      padding: 6.5rem 0 5.5rem;
+      overflow: hidden;
+    }
+    .ba-bg-tex {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 0%, rgba(122,184,122,.07) 0%, transparent 55%),
+                  radial-gradient(ellipse at 50% 100%, rgba(62,94,58,.10) 0%, transparent 60%);
+    }
+    .ba-wrap { max-width: 72rem; margin: 0 auto; padding: 0 2rem; position: relative; }
+    .ba-head { text-align: center; margin-bottom: 3rem; }
+    .ba-head .tag { margin-bottom: 1.25rem; }
+    .ba-head h2 {
+      font-size: clamp(1.75rem, 3.8vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.12;
+      color: #fff;
+      margin-bottom: .9rem;
+    }
+    .ba-head h2 em { font-style: italic; color: var(--green); font-weight: inherit; }
+    .ba-head p { font-size: .95rem; line-height: 1.72; color: var(--muted); max-width: 46ch; margin: 0 auto; }
+    .ba-pol-stage {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding: 1rem 0 2rem;
+    }
+    .ba-pol {
+      position: relative;
+      justify-self: center;
+      width: 100%;
+      max-width: 340px;
+      background: #f8f5ec;
+      padding: 14px 14px 56px;
+      border-radius: 2px;
+      box-shadow: 0 18px 56px rgba(0,0,0,.55), 0 4px 12px rgba(0,0,0,.3);
+      transition: transform .55s cubic-bezier(.25,.46,.45,.94), box-shadow .55s;
+      cursor: default;
+    }
+    .ba-pol-1 { transform: rotate(-2.5deg); }
+    .ba-pol-2 { transform: rotate(2deg); }
+    .ba-pol-1:hover { transform: rotate(-2.5deg) scale(1.04); z-index: 5; box-shadow: 0 24px 72px rgba(0,0,0,.7); }
+    .ba-pol-2:hover { transform: rotate(2deg) scale(1.04); z-index: 5; box-shadow: 0 24px 72px rgba(0,0,0,.7); }
+    .ba-pol-vid {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #0a0a0a;
+      overflow: hidden;
+      border-radius: 1px;
+    }
+    .ba-pol-vid video { width: 100%; height: 100%; object-fit: cover; }
+    .ba-pol-vid::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,16,10,.10) 0%, transparent 25%, transparent 70%, rgba(10,16,10,.45) 100%);
+      pointer-events: none;
+    }
+    .ba-pol-cap {
+      position: absolute;
+      left: 14px; right: 14px; bottom: 14px;
+      display: flex; justify-content: space-between; align-items: baseline;
+      color: #2a2a25;
+    }
+    .ba-pol-cap-label { font-size: 1.05rem; font-weight: 800; letter-spacing: -.01em; text-transform: lowercase; }
+    .ba-pol-cap-date { font-size: .72rem; font-weight: 500; color: rgba(0,0,0,.45); letter-spacing: .02em; }
+    .ba-bridge {
+      display: flex; flex-direction: column; align-items: center; gap: .65rem;
+      padding: 0 .5rem;
+    }
+    .ba-bridge-num { font-size: 2.5rem; font-weight: 800; color: var(--green); letter-spacing: -.04em; line-height: 1; }
+    .ba-bridge-lbl { font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+    .ba-bridge-arrow {
+      width: 2.5rem; height: 1px;
+      background: linear-gradient(to right, rgba(122,184,122,0), rgba(122,184,122,.5), rgba(122,184,122,0));
+      position: relative; margin-top: .35rem;
+    }
+    .ba-bridge-arrow::after {
+      content: '→';
+      position: absolute; top: 50%; right: -.25rem;
+      transform: translateY(-50%);
+      color: var(--green); font-size: 1rem; font-weight: 700;
+    }
+    .ba-cta-dark { display: flex; justify-content: center; margin-top: 2.5rem; }
+    .btn-lg { font-size: .975rem; padding: .85rem 2rem; }
+    .ba-mute {
+      position: absolute;
+      bottom: 68px; right: 22px;
+      width: 2.25rem; height: 2.25rem;
+      border-radius: 50%;
+      background: rgba(20,20,20,.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .18s, transform .14s cubic-bezier(.16,1,.3,1);
+      z-index: 3;
+    }
+    .ba-mute:hover { background: rgba(20,20,20,.75); transform: scale(1.06); }
+    .ba-mute svg { width: 1rem; height: 1rem; }
+    @media (max-width: 820px) {
+      .ba-pol-stage { grid-template-columns: 1fr; }
+      .ba-bridge { flex-direction: row; padding: 1rem 0; }
+      .ba-bridge-arrow { display: none; }
+      .ba-pol { max-width: 280px; }
+    }
   </style>
 </head>
 <body>
@@ -606,6 +721,61 @@ function closeMenu() {
     </div>
   </div>
 </section>
+<!-- ══ ANTES & DEPOIS ══════════════════════════════════ -->
+<section id="antes-depois">
+  <div class="ba-bg-tex"></div>
+  <div class="ba-wrap">
+    <header class="ba-head">
+      <span class="tag tag-d">+ Antes &amp; Depois</span>
+      <h2>Mesma Nadi.<br><em>Outra história.</em></h2>
+      <p>Reactiva a qualquer cão à vista. Algumas semanas de trabalho na raiz. Agora.</p>
+    </header>
+
+    <div class="ba-pol-stage">
+      <figure class="ba-pol ba-pol-1">
+        <div class="ba-pol-vid">
+          <video src="brand_assets/nadi-antes-depois.mp4" muted loop autoplay playsinline preload="metadata"
+            style="filter:saturate(.55) contrast(1.05) brightness(.92)"></video>
+          <button class="ba-mute" aria-label="Activar som" onclick="(function(b){var v=b.closest('.ba-pol-vid').querySelector('video');v.muted=!v.muted;if(!v.muted)v.play().catch(function(){});b.innerHTML=v.muted?'<svg viewBox=\'0 0 16 16\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M2 5.5h3l4-3v11l-4-3H2z\'/><path d=\'M11 6l4 4M15 6l-4 4\'/></svg>':'<svg viewBox=\'0 0 16 16\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M2 5.5h3l4-3v11l-4-3H2z\'/><path d=\'M11.5 5.5a3 3 0 0 1 0 5M13.5 3.5a6 6 0 0 1 0 9\'/></svg>'})(this)">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 5.5h3l4-3v11l-4-3H2z"/><path d="M11 6l4 4M15 6l-4 4"/>
+            </svg>
+          </button>
+        </div>
+        <figcaption class="ba-pol-cap">
+          <span class="ba-pol-cap-label">antes</span>
+          <span class="ba-pol-cap-date">02 · abril</span>
+        </figcaption>
+      </figure>
+
+      <div class="ba-bridge" aria-hidden="true">
+        <div class="ba-bridge-num">4</div>
+        <div class="ba-bridge-lbl">semanas</div>
+        <div class="ba-bridge-arrow"></div>
+      </div>
+
+      <figure class="ba-pol ba-pol-2">
+        <div class="ba-pol-vid">
+          <video src="brand_assets/nadi-antes-depois.mp4" muted loop autoplay playsinline preload="metadata"></video>
+          <button class="ba-mute" aria-label="Activar som" onclick="(function(b){var v=b.closest('.ba-pol-vid').querySelector('video');v.muted=!v.muted;if(!v.muted)v.play().catch(function(){});b.innerHTML=v.muted?'<svg viewBox=\'0 0 16 16\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M2 5.5h3l4-3v11l-4-3H2z\'/><path d=\'M11 6l4 4M15 6l-4 4\'/></svg>':'<svg viewBox=\'0 0 16 16\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M2 5.5h3l4-3v11l-4-3H2z\'/><path d=\'M11.5 5.5a3 3 0 0 1 0 5M13.5 3.5a6 6 0 0 1 0 9\'/></svg>'})(this)">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 5.5h3l4-3v11l-4-3H2z"/><path d="M11 6l4 4M15 6l-4 4"/>
+            </svg>
+          </button>
+        </div>
+        <figcaption class="ba-pol-cap">
+          <span class="ba-pol-cap-label">depois</span>
+          <span class="ba-pol-cap-date">30 · abril</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="ba-cta-dark">
+      <a href="avaliacao.html" class="btn btn-g btn-lg">Marcar avaliação gratuita →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ══ VS TABLE ════════════════════════════════════════ -->
 <section id="vs">
   <div class="wrap">
