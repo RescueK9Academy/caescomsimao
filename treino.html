@@ -56,7 +56,7 @@
     .nav-links a { font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.52); text-decoration: none; transition: color .18s; }
     .nav-links a:hover { color: #fff; }
     .nav-links a.nav-active { color: #fff; font-weight: 700; }
-    .btn-nav-cta { background: #fff; color: #161c16; padding: .55rem 1.375rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem; font-weight: 600; text-decoration: none; transition: background .18s, transform .14s; }
+    .btn-nav-cta { background: #F4EFE6; color: #161c16; padding: .55rem 1.375rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem; font-weight: 600; text-decoration: none; transition: background .18s, transform .14s; }
     .btn-nav-cta:hover { background: rgba(255,255,255,.88); transform: translateY(-1px); }
     .mob-btn { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 6px; z-index: 201; position: relative; }
     .mob-btn span { display: block; width: 20px; height: 2px; background: rgba(255,255,255,.6); border-radius: 2px; transition: transform .22s ease, opacity .22s ease; }
@@ -73,7 +73,7 @@
     .mob-menu.open a:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:.54s; }
     .mob-menu a:hover { color: #fff; }
     .mob-menu a.nav-active { color: var(--green); }
-    .mob-menu .mob-cta { margin-top: .5rem; background: #fff; color: #161c16; padding: .9rem 2.5rem; border-radius: 9999px; font-size: 1.5rem; font-weight: 700; }
+    .mob-menu .mob-cta { margin-top: .5rem; background: #F4EFE6; color: #161c16; padding: .9rem 2.5rem; border-radius: 9999px; font-size: 1.5rem; font-weight: 700; }
 
     /* ── Hero ─────────────────────────────────────────── */
     #hero { background: var(--bg); padding: 9rem 0 6.5rem; position: relative; text-align: center; }
@@ -89,7 +89,7 @@
     #dor { background: var(--cream); padding: 6.5rem 0; border-top: 1px solid rgba(0,0,0,.07); }
     .dor-header { text-align: center; margin-bottom: 4rem; }
     .dor-moments { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 3rem; }
-    .dor-moment { padding: 2rem 2rem 2.25rem; border: 1px solid rgba(0,0,0,.08); border-radius: calc(var(--r)*1.25); background: #fff; }
+    .dor-moment { padding: 2rem 2rem 2.25rem; border: 1px solid rgba(0,0,0,.08); border-radius: calc(var(--r)*1.25); background: #F4EFE6; }
     .dor-moment-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.75rem; font-weight: 800; color: var(--primary); letter-spacing: -.05em; line-height: 1; opacity: .25; margin-bottom: 1.25rem; }
     .dor-moment-h { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: #1a1a17; line-height: 1.3; margin-bottom: .875rem; }
     .dor-moment-p { font-size: .875rem; color: var(--muted-dark); line-height: 1.8; }
@@ -112,7 +112,7 @@
 
     .prog-tabs { display: flex; gap: .5rem; background: rgba(255,255,255,.06); border-radius: 9999px; padding: .3rem; width: fit-content; margin: 4rem auto 0; }
     .prog-tab { padding: .55rem 1.5rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem; font-weight: 600; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,.5); transition: background .2s, color .2s; }
-    .prog-tab.active { background: #fff; color: #161c16; }
+    .prog-tab.active { background: #F4EFE6; color: #161c16; }
     .prog-panel { display: none; }
     .prog-panel.active { display: grid; grid-template-columns: 1fr 2fr; gap: 3.5rem; align-items: start; margin-top: 2.5rem; }
     .prog-label { font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--green); margin-bottom: .875rem; }
@@ -150,9 +150,11 @@
     #testi { background: var(--cream); padding: 5.5rem 0; }
     .testi-scroll { display: flex; gap: 1rem; overflow-x: auto; overflow-y: hidden; padding: .25rem 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; overscroll-behavior: contain; margin-top: 2.5rem; }
     .testi-scroll::-webkit-scrollbar { display: none; }
-    .testi-card { flex-shrink: 0; width: 280px; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; }
+    .testi-card { flex-shrink: 0; width: 280px; background: #F4EFE6; border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; }
     .testi-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; position: relative; flex-shrink: 0; }
-    .testi-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .testi-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .testi-no-img { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-h) 100%); aspect-ratio: 4/3; display: flex; align-items: flex-end; padding: .75rem .875rem; flex-shrink: 0; }
+    .testi-no-img-label { font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.8); letter-spacing: .01em; }
     .testi-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,16,10,.82) 0%, rgba(10,16,10,.18) 50%, transparent 100%); }
     .testi-img-name { position: absolute; bottom: .75rem; left: .875rem; right: .875rem; font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.75); letter-spacing: .01em; }
     .testi-body { padding: 1rem 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
@@ -160,7 +162,15 @@
     .testi-headline { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .975rem; font-weight: 700; line-height: 1.35; color: #1a1a17; margin-bottom: .625rem; }
     .testi-headline::before { content: '\201C'; }
     .testi-headline::after  { content: '\201D'; }
-    .testi-text { flex: 1; font-size: .815rem; line-height: 1.72; color: rgba(0,0,0,.52); }
+    .testi-text {
+      font-size: .815rem; line-height: 1.72; color: rgba(0,0,0,.52);
+      max-height: 7.5rem; overflow-y: auto;
+      scrollbar-width: thin; scrollbar-color: rgba(0,0,0,.18) transparent;
+      padding-right: .25rem;
+    }
+    .testi-text::-webkit-scrollbar { width: 3px; }
+    .testi-text::-webkit-scrollbar-track { background: transparent; }
+    .testi-text::-webkit-scrollbar-thumb { background: rgba(0,0,0,.18); border-radius: 9999px; }
     .testi-nav { display: flex; align-items: center; justify-content: center; gap: .875rem; margin-top: 1.75rem; }
     .testi-arrow { width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid rgba(0,0,0,.16); background: transparent; color: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: border-color .18s, color .18s, transform .14s cubic-bezier(.16,1,.3,1); }
     .testi-arrow:hover { border-color: rgba(0,0,0,.4); color: #1a1a17; transform: scale(1.08); }
@@ -226,7 +236,7 @@
     #cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,.09) 0%, transparent 55%), radial-gradient(ellipse at 75% 60%, rgba(0,0,0,.12) 0%, transparent 50%); pointer-events: none; }
     .cta-h { font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 800; letter-spacing: -.04em; color: #fff; line-height: 1.1; margin-bottom: 1.125rem; position: relative; z-index: 1; }
     .cta-sub { font-size: 1.05rem; color: rgba(255,255,255,.72); line-height: 1.72; max-width: 46ch; margin: 0 auto 2.5rem; position: relative; z-index: 1; }
-    .cta-btn { background: #fff; color: var(--primary); padding: .9rem 2.5rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; transition: transform .14s cubic-bezier(.16,1,.3,1), box-shadow .18s; position: relative; z-index: 1; }
+    .cta-btn { background: #F4EFE6; color: var(--primary); padding: .9rem 2.5rem; border-radius: 9999px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; transition: transform .14s cubic-bezier(.16,1,.3,1), box-shadow .18s; position: relative; z-index: 1; }
     .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,0,0,.22); }
 
     /* ── Shared section headings ──────────────────────── */
@@ -270,6 +280,13 @@
     .anim { opacity:0; transform:translateY(28px); transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
     .anim.in { opacity:1; transform:none; }
 
+    /* ── WhatsApp Updates ──────────────────────────────── */
+    #wa-updates { background: var(--cream); padding: 5.5rem 0; }
+    .wa-section-h { text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; color: #1a1a17; margin-bottom: 2.75rem; }
+    .wa-grid { position: relative; margin-top: 2.75rem; }
+    .wa-card { position: absolute; border-radius: .875rem; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.10); opacity: 0; }
+    .wa-card img { width: 100%; height: auto; display: block; }
+
     /* ── Responsive ───────────────────────────────────── */
     @media (max-width: 1024px) {
       .vs-table { grid-template-columns: 1fr 1fr; }
@@ -289,7 +306,7 @@
       .como-connector { display: none; }
       .testi-grid { grid-template-columns: 1fr; }
       .historia-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .historia-img-wrap { aspect-ratio: 16/9; }
+      .historia-img-wrap { aspect-ratio: 16/9; position: static; }
       .num-strip { grid-template-columns: 1fr 1fr; }
       .num-item { border-right: none; border-bottom: 1px solid var(--border); }
       .num-item:nth-child(3), .num-item:last-child { border-bottom: none; }
@@ -520,6 +537,9 @@ function closeMenu() {
         </div>
       </div>
     </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="avaliacao.html" class="btn btn-wo">Marcar avaliação gratuita →</a>
+    </div>
   </div>
 </section>
 
@@ -558,6 +578,24 @@ function closeMenu() {
   </div>
 </section>
 
+<!-- ══ WHATSAPP UPDATES ═══════════════════════════════ -->
+<section id="wa-updates">
+  <div class="wrap">
+    <p class="wa-section-h">Mensagens dos nossos clientes</p>
+    <div class="wa-grid">
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-1-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-2-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-3-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-4-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-5-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-6-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-7-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-8-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-9-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+      <div class="wa-card"><img src="brand_assets/Whatsaap%20Updates/screenshot-10-updates.png" alt="Mensagem cliente" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 <!-- ══ VS TABLE ════════════════════════════════════════ -->
 <section id="vs">
   <div class="wrap">
@@ -608,75 +646,146 @@ function closeMenu() {
       <p class="sec-sub-l">Vê como cães que antes eram reativos, agressivos ou impossíveis de passear hoje vivem de forma calma com os seus donos.</p>
     </div>
 
-    <div class="testi-scroll" id="tscroll">
+        <div class="testi-scroll" id="tscroll">
+
+      <!-- 1: Pelayo Alonso — Azul -->
       <div class="testi-card">
         <div class="testi-img">
-          <img src="https://placehold.co/560x420/1e4220/7ab87a" alt="Maria S.">
+          <img src="brand_assets/Reviews/reviews-blue.png" alt="Azul" loading="lazy">
           <div class="testi-img-overlay"></div>
-          <div class="testi-img-name">Dono: Maria S. · Cão: Nadi</div>
+          <div class="testi-img-name">Pelayo A. · Azul (Pastor Alemão)</div>
         </div>
         <div class="testi-body">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-headline">Finalmente encontrámos a solução.</div>
-          <div class="testi-text">Depois de três treinadores, já não acreditava que fosse possível. A reactividade da Nadi com outros cães era enorme. Com o Simão foi tudo mais simples do que esperava. Em poucas semanas comecei a ver resultados reais.</div>
+          <div class="testi-headline">É como ter um cão diferente.</div>
+          <div class="testi-text">Não queres ler a review completa? Resumo: o método funciona. 5 estrelas. Adoptámos uma Pastora Alemã de 14 meses descrita pelos donos anteriores como 'um pouco reativa'. Foi um eufemismo enorme. Passeios às 5h da manhã e às 23h, sempre a tentar evitar pessoas e cães. Era stressante e esgotante. Uma semana de treino e parecia um cão diferente. Sem mais passeios às 5 da manhã, sem ansiedade a planear cada saída. Hoje vivemos uma vida completamente normal com ela. Recomendaria um milhão de vezes.</div>
         </div>
       </div>
+
+      <!-- 2: Charlote Van — Nessa -->
       <div class="testi-card">
         <div class="testi-img">
-          <img src="https://placehold.co/560x420/243024/7ab87a" alt="João P.">
+          <img src="brand_assets/Reviews/review-nessa.jpg" alt="Nessa" loading="lazy">
           <div class="testi-img-overlay"></div>
-          <div class="testi-img-name">Dono: João P. · Cão: Nessa</div>
+          <div class="testi-img-name">Charlote V. · Nessa (Malinois, 8 anos)</div>
         </div>
         <div class="testi-body">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-headline">Em poucos dias já pensávamos desistir dela.</div>
-          <div class="testi-text">Adoptámos a Nessa e rapidamente começaram os problemas: reactividade, ladrar constante, ansiedade. Chegámos a considerar devolvê-la. Com a ajuda do Simão, em poucas semanas tudo mudou.</div>
+          <div class="testi-headline">Estávamos prestes a devolvê-la. Hoje não a troco por nada.</div>
+          <div class="testi-text">Foi uma enorme alegria levar finalmente a Nessa para casa, depois de um mês de passeios no canil. Mas depois de apenas 5 dias, começámos a notar problemas sérios: ladrar constante, não exagero quando digo centenas por dia, reatividade a cães, pessoas, gatos, pássaros, puxar na trela. Para ser honesta, ao fim de 10 dias, considerámos devolvê-la ao canil. Sentíamo-nos completamente incapazes. Esta não era a cadela com que tínhamos sonhado. Contactámos o Simão em desespero. Com a ajuda dele, a Nessa transformou-se em poucas semanas numa cadela feliz e relaxada. Hoje passeia sem trela, já não é reativa, é muito obediente, está a aprender a confiar nas pessoas, e o nosso vínculo é mais forte do que nunca. Se estás a passar por dificuldades, quero encorajar-te e dizer-te que há esperança. Não tenhas medo de pedir ajuda. Obrigado Simão!!</div>
         </div>
       </div>
+
+      <!-- 3: Monica Vigo — Nadi -->
       <div class="testi-card">
         <div class="testi-img">
-          <img src="https://placehold.co/560x420/1a3a1c/7ab87a" alt="Ana R.">
+          <img src="brand_assets/Reviews/review-nadi.jpg" alt="Nadi" loading="lazy">
           <div class="testi-img-overlay"></div>
-          <div class="testi-img-name">Dono: Ana R. · Cão: Turco</div>
+          <div class="testi-img-name">Monica V. · Nadi</div>
         </div>
         <div class="testi-body">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-headline">Nunca pensei que fosse possível passear sem stress.</div>
-          <div class="testi-text">O Turco era agressivo a outros cães e a pessoas desconhecidas. O Simão percebeu imediatamente o que estava a acontecer e deu-nos ferramentas concretas que funcionam mesmo na rua.</div>
+          <div class="testi-headline">Depois de 3 treinadores, finalmente encontrámos a solução.</div>
+          <div class="testi-text">Depois de 3 treinadores, duvidava que algo fosse resultar. Estava cansada e com a confiança muito baixa na Nadi. Trabalhei com o Simão durante pouco mais de 2 meses, sessões semanais online e acompanhamento por WhatsApp a rever vídeos para refinar o meu trabalho com a Nadi. Sempre disponível para nos ajudar a avançar, foi muito fácil trabalhar com o Simão. Foi muito mais simples do que esperava, com resultados desde o primeiro momento. Hoje tenho um vínculo muito mais profundo com a Nadi e desfruto dos nossos passeios. Continuamos a treinar e sinto que temos muitos anos pela frente para desfrutar juntas. Obrigada Simão, infinitamente grata.</div>
         </div>
       </div>
+
+      <!-- 4: Jenni — Gus -->
       <div class="testi-card">
         <div class="testi-img">
-          <img src="https://placehold.co/560x420/1f281f/7ab87a" alt="Pedro M.">
+          <img src="brand_assets/Reviews/review-gus.jpg" alt="Gus" loading="lazy">
           <div class="testi-img-overlay"></div>
-          <div class="testi-img-name">Dono: Pedro M. · Cão: Rex</div>
+          <div class="testi-img-name">Jenni · Gus (Boxer)</div>
         </div>
         <div class="testi-body">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-headline">Completamente diferente de todos os outros treinadores.</div>
-          <div class="testi-text">Tentei métodos online, treinos em grupo, nada funcionou como o Simão. Logo na primeira sessão percebeu o problema a fundo e começou a trabalhar de verdade.</div>
+          <div class="testi-headline">Mudou a nossa vida, e a do Gus.</div>
+          <div class="testi-text">Adoptámos o Gus aos 11 meses e rapidamente percebemos que estava a mostrar sinais de reatividade. Tendo tido anteriormente um cão reativo, não queríamos mais 10 anos a gerir tudo outra vez. Trabalhámos inicialmente com um treinador local mas o progresso era lento. Pesquisei tudo o que havia online e, entre todos os chamados 'gurus', o Simão destacou-se. A combinação de sessões práticas e teóricas foi perfeita. Fizemos passeios sem trela, passamos por cães e pessoas com calma, e fomos a sítios que antes eram impensáveis. Em resumo: muda a vida, e vale o dinheiro e muito mais. Obrigada!</div>
         </div>
       </div>
+
+      <!-- 5: Suzie — Maggie -->
       <div class="testi-card">
         <div class="testi-img">
-          <img src="https://placehold.co/560x420/2c3e2c/7ab87a" alt="Sofia R.">
+          <img src="brand_assets/Reviews/review-maggie.jpg" alt="Maggie" loading="lazy">
           <div class="testi-img-overlay"></div>
-          <div class="testi-img-name">Dono: Sofia R. · Cão: Mel</div>
+          <div class="testi-img-name">Suzie · Maggie</div>
         </div>
         <div class="testi-body">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-headline">Desde a primeira sessão senti que era diferente.</div>
-          <div class="testi-text">Tentei dois treinadores antes e nenhum resultou. Com o Simão foi diferente desde o primeiro dia, percebeu imediatamente o que estava a falhar e explicou-me tudo com clareza.</div>
+          <div class="testi-headline">Depois de 3 anos e vários treinadores, finalmente.</div>
+          <div class="testi-text">Que experiência incrível. A Maggie voltou uma cadela nova. Depois de tentar muitos treinadores diferentes durante os últimos 3 anos, estava desesperada para resolver a agressividade da Maggie a cães e pessoas. Estava a chegar ao ponto em que não a queria levar à rua. Não podia ter visitas em casa. A vida da Maggie estava a ficar cada vez mais pequena dia após dia. Sim, é um investimento, mas valeu cada cêntimo. Hoje sinto que posso levar a Maggie a qualquer sítio. Está a adorar a vida sem trela todos os dias. Passa por cães sem reagir.</div>
         </div>
       </div>
+
+      <!-- 6: Sami Hirst — Bug (sem imagem) -->
+      <div class="testi-card">
+        <div class="testi-no-img">
+          <span class="testi-no-img-label">Sami H. · Bug (Pastor Alemão / Husky)</span>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">Céptica no início. Rendida no fim.</div>
+          <div class="testi-text">Tinha grandes esperanças de que o Simão conseguisse ajudar-me e ao Bug, um cão reativo com um instinto de perseguição muito elevado, a ter algum controlo e a viver uma vida feliz, saudável e segura. Não me desiludiram. Uma semana de trabalho intenso para nós dois, a aprender novas competências com equipamento sobre o qual era inicialmente muito céptica, mas a ver e a experienciar resultados incríveis. Obrigada ao Simão por todo o encorajamento firme mas amável. Agora é a minha vez e do Bug garantir que a prática leva à perfeição e à normalidade.</div>
+        </div>
+      </div>
+
+      <!-- 7: Andreia Alpuim — Fredie -->
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="brand_assets/Reviews/review-freddie.PNG" alt="Fredie" loading="lazy">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Andreia A. · Fredie (Labrador)</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">O nosso cão ganhou um novo amigo, e nós também.</div>
+          <div class="testi-text">O Simão ajudou-nos com o comportamento do nosso labrador traçado. Ele não tinha regras quando ficou ao nosso cuidado aos 5 anos. Era difícil levá-lo à rua pois estava sempre a puxar a trela. Saltava para cima de nós, ladrava a todos os cães que via, e não conseguia descansar. Através do Simão conseguimos estabelecer uma rotina e regras com ele. Ensinou-nos que ter paciência é importante e que nada muda de um dia para o outro. Já notamos bastantes diferenças e finalmente conseguimos sair à rua sem que ele esteja sempre a puxar. A ajuda do Simão foi indispensável e o nosso cão ganhou um novo amigo!</div>
+        </div>
+      </div>
+
+      <!-- 8: Laureano Ramos — Basset Hound -->
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="brand_assets/Reviews/review-basset.jpg" alt="Basset Hound" loading="lazy">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Laureano R. · Basset Hound</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">Nunca pensei que fosse possível.</div>
+          <div class="testi-text">Adorei a experiência com o Simão a treinar o meu Basset Hound, que normalmente são teimosos! Ele teve uma paciência incrível e conseguiu que o meu cão colaborasse connosco, algo que nunca pensei que fosse acontecer. O Simão mostrou muito conhecimento sobre cães e adaptou cada sessão às necessidades do meu. Recomendo o Simão a quem precisar de um treinador de confiança!</div>
+        </div>
+      </div>
+
+      <!-- 9: Guilherme Franco — Pupie -->
+      <div class="testi-card">
+        <div class="testi-img">
+          <img src="brand_assets/Reviews/review-pupie.png" alt="Pupie" loading="lazy">
+          <div class="testi-img-overlay"></div>
+          <div class="testi-img-name">Guilherme F. · Pupie (Caniche Toy)</div>
+        </div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-headline">O Simão não foi apenas um treinador, tornou-se um amigo da família.</div>
+          <div class="testi-text">O Pupie é um caniche toy muito carinhoso mas também ansioso e com um instinto protetor muito forte — chegava a tentar morder quem se aproximasse e não fizesse parte do círculo familiar. Foi então que conhecemos o Simão. Desde o primeiro encontro demonstrou grande empatia e profissionalismo. Criou um plano de treino personalizado, focado em técnicas de dessensibilização, reforço positivo e exercícios de relaxamento. Com o tempo e muita paciência, o Pupie começou a mudar. Tornou-se mais confiante e já não ficava tão ansioso quando nos afastávamos. Graças ao trabalho do Simão, o Pupie não só superou grande parte da sua ansiedade como também nos ensinou que, com dedicação e amor, é possível melhorar a vida de um animal. O Simão não foi apenas um treinador, tornou-se um amigo da nossa família.</div>
+        </div>
+      </div>
+
+    </div>
+
     </div>
 
     <div class="testi-nav">
       <button class="testi-arrow" id="tprev" aria-label="Anterior">
         <svg viewBox="0 0 12 12" fill="none"><path d="M7.5 2L3.5 6L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <div class="testi-dots" id="tdots">
+            <div class="testi-dots" id="tdots">
         <div class="testi-dot on"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
         <div class="testi-dot"></div>
         <div class="testi-dot"></div>
         <div class="testi-dot"></div>
@@ -685,6 +794,9 @@ function closeMenu() {
       <button class="testi-arrow" id="tnext" aria-label="Próximo">
         <svg viewBox="0 0 12 12" fill="none"><path d="M4.5 2L8.5 6L4.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="avaliacao.html" class="btn btn-g">Junta-te a eles — avaliação gratuita →</a>
     </div>
   </div>
 </section>
@@ -755,6 +867,9 @@ function closeMenu() {
       <div style="display:flex;align-items:center;justify-content:center;">
         <img src="brand_assets/guarantee-icon.png" alt="Garantia" class="guar-icon">
       </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="avaliacao.html" class="btn btn-wo">Marcar avaliação gratuita →</a>
     </div>
   </div>
 </section>
@@ -875,7 +990,7 @@ function closeMenu() {
         </div>
         <div class="footer-col-h">Legal</div>
         <div class="footer-legal">
-          <a href="#">Política de Privacidade</a>
+          <a href="politica-de-privacidade.html">Política de Privacidade</a>
           <a href="#">Termos</a>
         </div>
       </div>
@@ -925,30 +1040,30 @@ function closeMenu() {
   const ts = document.getElementById('tscroll');
   const td = document.querySelectorAll('.testi-dot');
   if (ts && td.length) {
+    let cur = 0;
     const cardW = () => ts.querySelector('.testi-card').offsetWidth + 16;
-    const goTo = i => ts.scrollTo({left: i * cardW(), behavior:'smooth'});
+    const setDots = i => td.forEach((d,j) => d.classList.toggle('on', i === j));
+    const goTo = i => {
+      cur = Math.max(0, Math.min(td.length - 1, i));
+      ts.scrollTo({left: cur * cardW(), behavior:'smooth'});
+      setDots(cur);
+    };
     ts.addEventListener('scroll', () => {
       const i = Math.round(ts.scrollLeft / cardW());
-      td.forEach((d,j) => d.classList.toggle('on', i === j));
+      if (i !== cur) { cur = i; setDots(cur); }
     }, {passive:true});
     td.forEach((d,i) => d.addEventListener('click', () => goTo(i)));
     const prev = document.getElementById('tprev');
     const next = document.getElementById('tnext');
-    if (prev) prev.addEventListener('click', () => {
-      const i = Math.round(ts.scrollLeft / cardW());
-      goTo(Math.max(0, i - 1));
-    });
-    if (next) next.addEventListener('click', () => {
-      const i = Math.round(ts.scrollLeft / cardW());
-      goTo(Math.min(td.length - 1, i + 1));
-    });
+    if (prev) prev.addEventListener('click', () => goTo(cur - 1));
+    if (next) next.addEventListener('click', () => goTo(cur + 1));
   }
 </script>
 
 <script>
 (function() {
   const SELECTORS = [
-    '.sec-head', '.prog-step', '.como-step', '.testi-card',
+    '.sec-head', '.wa-section-h', '.prog-step', '.como-step', '.testi-card',
     '.prog-panel.active > *', '.vs-table', '.parati-table',
     '.historia-grid > *', '.num-item', '.guar-grid > *',
     '.faq-item', '#cta .wrap-sm > *', '.dor-moment', '.dor-truth', '.dor-header',
@@ -966,6 +1081,47 @@ function closeMenu() {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   els.forEach(el => io.observe(el));
+})();
+
+(function() {
+  const GAP = 16;
+  function cols() { return window.innerWidth <= 640 ? 2 : window.innerWidth <= 960 ? 3 : 5; }
+  function layout() {
+    const grid = document.querySelector('.wa-grid');
+    if (!grid) return;
+    const cards = [...grid.querySelectorAll('.wa-card')];
+    const n = cols();
+    const colW = (grid.clientWidth - (n - 1) * GAP) / n;
+    const heights = new Array(n).fill(0);
+    cards.forEach(card => {
+      const img = card.querySelector('img');
+      const col = heights.indexOf(Math.min(...heights));
+      card.style.width = colW + 'px';
+      card.style.transform = 'translate(' + (col * (colW + GAP)) + 'px,' + heights[col] + 'px)';
+      const imgH = img && img.naturalWidth ? Math.round(img.naturalHeight * (colW / img.naturalWidth)) : 200;
+      heights[col] += imgH + GAP;
+    });
+    grid.style.height = Math.max(...heights) - GAP + 'px';
+  }
+  const imgs = [...document.querySelectorAll('.wa-card img')];
+  Promise.all(imgs.map(img => img.complete && img.naturalWidth
+    ? Promise.resolve()
+    : new Promise(res => { img.addEventListener('load', res); img.addEventListener('error', res); })
+  )).then(layout);
+  window.addEventListener('resize', layout);
+
+  const grid = document.querySelector('.wa-grid');
+  if (grid) {
+    const waIO = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      [...grid.querySelectorAll('.wa-card')].forEach((card, i) => {
+        card.style.transition = 'opacity .5s cubic-bezier(.16,1,.3,1) ' + (i * 0.05) + 's';
+        card.style.opacity = '1';
+      });
+      waIO.disconnect();
+    }, { threshold: 0.05 });
+    waIO.observe(grid);
+  }
 })();
 </script>
 
