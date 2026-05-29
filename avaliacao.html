@@ -144,81 +144,173 @@
     }
 
     /* ── Booking / Quiz section ─────────────────────── */
-    #booking { background: var(--cream); padding: 5rem 0 6rem; }
+    #booking { padding: 0; }
 
-    .qz-wrap { max-width: 38rem; margin: 0 auto; padding: 0 1.75rem; }
+    .fz-surface {
+      --acc: #3e5e3a; --acc-h: #4f7a4f; --rad: 12px;
+      --s-bg: var(--cream); --s-card: #ffffff;
+      --s-ink: #1a1f1a; --s-muted: rgba(0,0,0,.55);
+      --s-faint: rgba(0,0,0,.38); --s-border: rgba(0,0,0,.10);
+      background: var(--s-bg); color: var(--s-ink);
+      padding: 4.5rem 0 6rem;
+    }
+    .fz-inner { max-width: 60rem; margin: 0 auto; padding: 0 1.75rem; }
 
-    /* Progress */
-    .qz-prog-wrap { background: rgba(0,0,0,.09); border-radius: 9999px; height: 3px; margin-bottom: .875rem; overflow: hidden; }
-    .qz-prog-bar { height: 100%; background: var(--primary); border-radius: 9999px; transition: width .45s cubic-bezier(.16,1,.3,1); }
-    .qz-step-lbl { font-size: .78rem; font-weight: 600; color: var(--muted-dark); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 2.25rem; display: block; }
+    /* Split grid */
+    .fz-grid { display: grid; grid-template-columns: minmax(0,18.5rem) 1fr; gap: 4.5rem; align-items: start; }
 
-    /* Slide */
-    @keyframes qzIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:none; } }
-    @keyframes qzInBack { from { opacity:0; transform:translateX(-18px); } to { opacity:1; transform:none; } }
-    .qz-slide { animation: qzIn .32s cubic-bezier(.16,1,.3,1) both; }
+    /* Left rail */
+    .fz-rail { position: sticky; top: 6rem; }
+    .fz-num {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+      letter-spacing: -.04em; line-height: 1;
+      font-size: clamp(2.75rem, 6vw, 3.75rem);
+      margin-bottom: 1.25rem; color: var(--acc);
+    }
+    .fz-num span { color: var(--s-faint); font-size: .42em; letter-spacing: 0; }
+    .fz-question {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+      letter-spacing: -.03em; line-height: 1.12;
+      font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+      color: var(--s-ink); margin-bottom: 1.1rem;
+    }
+    .fz-voice {
+      font-style: italic; font-weight: 400;
+      font-size: .95rem; line-height: 1.65; color: var(--s-muted); max-width: 30ch;
+    }
+    .fz-prog { margin-top: 2.5rem; }
+    .fz-prog-track { height: 3px; background: var(--s-border); border-radius: 9999px; overflow: hidden; }
+    .fz-prog-bar { height: 100%; background: var(--acc); border-radius: 9999px; transition: width .5s cubic-bezier(.16,1,.3,1); width: 0%; }
 
-    .qz-q { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -.03em; color: #1a1a17; line-height: 1.15; margin-bottom: .6rem; }
-    .qz-hint { font-size: .875rem; color: var(--muted-dark); margin-bottom: 1.75rem; }
-
-    /* Options */
-    .qz-opts { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.75rem; }
-    .qz-opt { display: block; cursor: pointer; }
-    .qz-opt input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
-    .qz-opt-lbl {
-      display: flex; align-items: center; gap: .875rem;
-      padding: .875rem 1.125rem;
-      background: #fff; border: 1.5px solid rgba(0,0,0,.1); border-radius: var(--r);
-      font-size: .9375rem; font-weight: 500; color: #1a1a17; line-height: 1.35;
-      transition: border-color .18s, box-shadow .18s, background .18s;
+    /* Right / main */
+    .fz-main { min-width: 0; }
+    .fz-hint { font-size: .85rem; color: var(--s-muted); margin-bottom: 1.5rem; }
+    .fz-opts { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.75rem; }
+    .fz-opt {
+      display: flex; align-items: center; gap: 1rem; width: 100%; text-align: left;
+      padding: 1rem 1.15rem;
+      background: var(--s-card); border: 1.5px solid var(--s-border); border-radius: var(--rad);
+      color: var(--s-ink); font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; line-height: 1.3;
       cursor: pointer;
+      transition: border-color .18s, background .18s, box-shadow .18s, transform .12s cubic-bezier(.16,1,.3,1);
     }
-    .qz-opt-lbl:hover { border-color: rgba(62,94,58,.3); background: rgba(62,94,58,.02); }
-    .qz-opt input:checked + .qz-opt-lbl {
-      border-color: var(--primary);
-      background: rgba(62,94,58,.05);
-      box-shadow: 0 0 0 3px rgba(62,94,58,.1);
-    }
-    .qz-box {
-      width: 1.125rem; height: 1.125rem; flex-shrink: 0;
-      border: 1.5px solid rgba(0,0,0,.2); border-radius: 4px; background: #fff;
+    .fz-opt:hover { border-color: rgba(62,94,58,.45); transform: translateY(-1px); }
+    .fz-opt.sel { border-color: var(--acc); background: rgba(62,94,58,.07); box-shadow: 0 0 0 3px rgba(62,94,58,.13); }
+    .fz-badge {
+      flex-shrink: 0; width: 1.9rem; height: 1.9rem;
       display: flex; align-items: center; justify-content: center;
-      transition: background .18s, border-color .18s;
+      border: 1.5px solid var(--s-border); border-radius: .55rem;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: .82rem; font-weight: 700;
+      color: var(--s-faint); background: transparent;
+      transition: background .18s, border-color .18s, color .18s;
+      position: relative;
     }
-    .qz-opt--radio .qz-box { border-radius: 50%; }
-    .qz-opt input:checked + .qz-opt-lbl .qz-box { background: var(--primary); border-color: var(--primary); }
-    .qz-box svg { display: none; }
-    .qz-opt input:checked + .qz-opt-lbl .qz-box svg { display: block; }
+    .fz-opt[data-single="true"] .fz-badge { border-radius: 50%; }
+    .fz-opt.sel .fz-badge { background: var(--acc); border-color: var(--acc); color: #fff; }
+    .fz-badge-letter { }
+    .fz-badge-chk { display: none; position: absolute; }
+    .fz-opt.sel .fz-badge-letter { visibility: hidden; }
+    .fz-opt.sel .fz-badge-chk { display: flex; align-items: center; justify-content: center; }
+    .fz-opt-text { flex: 1; }
+    .fz-check { flex-shrink: 0; opacity: 0; transform: scale(.6); color: var(--acc); transition: opacity .18s, transform .18s cubic-bezier(.16,1,.3,1); }
+    .fz-opt.sel .fz-check { opacity: 1; transform: scale(1); }
 
-    /* Buttons */
-    .qz-btn {
-      width: 100%; padding: .9rem 2rem; border-radius: 9999px;
-      background: var(--primary); color: #fff; border: none;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700;
-      cursor: pointer; transition: background .18s, transform .14s cubic-bezier(.16,1,.3,1), opacity .18s;
+    /* Actions */
+    .fz-actions { display: flex; flex-direction: column; gap: .25rem; }
+    .fz-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      align-self: flex-start; padding: .95rem 2.1rem; border-radius: 9999px;
+      background: var(--acc); color: #fff; border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: -.01em;
+      cursor: pointer; transition: background .18s, transform .14s cubic-bezier(.16,1,.3,1), opacity .2s;
     }
-    .qz-btn:hover:not(:disabled) { background: var(--primary-h); transform: translateY(-1px); }
-    .qz-btn:disabled { opacity: .35; cursor: not-allowed; }
-    .qz-back-btn {
-      display: flex; align-items: center; gap: .35rem; margin-top: 1rem;
-      background: none; border: none; font-size: .875rem; color: var(--muted-dark);
-      cursor: pointer; padding: 0; transition: color .18s;
+    .fz-btn:hover:not(:disabled) { background: var(--acc-h); transform: translateY(-1px); }
+    .fz-btn:disabled { opacity: .3; cursor: not-allowed; }
+    .fz-back {
+      align-self: flex-start; margin-top: .85rem;
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: none; border: none; padding: .25rem 0;
+      font-size: .85rem; color: var(--s-faint); cursor: pointer; transition: color .18s;
     }
-    .qz-back-btn:hover { color: #1a1a17; }
+    .fz-back:hover { color: var(--s-ink); }
+
+    /* Animations */
+    @keyframes fzIn     { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    @keyframes fzInBack { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:none; } }
+    .fz-anim-fwd  { animation: fzIn .4s cubic-bezier(.16,1,.3,1) both; }
+    .fz-anim-back { animation: fzInBack .4s cubic-bezier(.16,1,.3,1) both; }
 
     /* Result */
-    .qz-result { text-align: center; padding: 2.5rem 0 1rem; }
-    .qz-result-icon {
-      width: 3.5rem; height: 3.5rem; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+    .fz-result { max-width: 60rem; margin: 0 auto; text-align: center; padding: 1rem 0; }
+    .fz-result-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--acc); margin-bottom: 1.75rem;
     }
-    .qz-result-icon--good { background: rgba(62,94,58,.1); color: var(--primary); }
-    .qz-result-icon--comm { background: rgba(122,184,122,.12); color: #3e7a3e; }
-    .qz-result-h { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.625rem; font-weight: 800; letter-spacing: -.025em; color: #1a1a17; margin-bottom: .75rem; line-height: 1.2; }
-    .qz-result-p { font-size: .9375rem; color: var(--muted-dark); line-height: 1.72; max-width: 36ch; margin: 0 auto 2rem; }
-    .qz-redir-bar { height: 3px; background: rgba(0,0,0,.08); border-radius: 9999px; max-width: 10rem; margin: 0 auto; overflow: hidden; }
-    .qz-redir-fill { height: 100%; background: var(--primary); border-radius: 9999px; animation: redirFill var(--dur, 3s) linear forwards; }
-    @keyframes redirFill { from { width: 0; } to { width: 100%; } }
+    .fz-result-icon {
+      width: 4rem; height: 4rem; border-radius: 50%; margin: 0 auto 1.75rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(62,94,58,.12); color: var(--acc);
+    }
+    .fz-result-icon--comm { background: rgba(122,184,122,.14); color: #3a7a3a; }
+    .fz-result-h {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; letter-spacing: -.03em;
+      font-size: clamp(1.65rem, 3.5vw, 2.25rem); line-height: 1.12; color: var(--s-ink);
+      margin-bottom: 1rem;
+    }
+    .fz-result-h em { color: var(--acc); font-style: italic; }
+    .fz-result-p { font-size: 1rem; line-height: 1.7; color: var(--s-muted); max-width: 40ch; margin: 0 auto 2rem; }
+    .fz-result-recap { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 2.25rem; }
+    .fz-chip { font-size: .8rem; font-weight: 500; color: var(--s-muted); padding: .4rem .85rem; border-radius: 9999px; border: 1px solid var(--s-border); background: var(--s-card); }
+
+    /* Booking option cards (good fit result) */
+    .fz-book-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; text-align: left; }
+    .fz-book-card {
+      background: var(--s-card); border: 1.5px solid var(--s-border); border-radius: var(--rad);
+      padding: 2rem 1.875rem; text-decoration: none; color: var(--s-ink);
+      transition: border-color .2s, box-shadow .2s, transform .14s cubic-bezier(.16,1,.3,1);
+      display: block;
+    }
+    .fz-book-card:hover { border-color: var(--acc); box-shadow: 0 4px 20px rgba(62,94,58,.1); transform: translateY(-2px); }
+    .fz-book-pill {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .22rem .7rem; border-radius: 9999px; font-size: .68rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase; margin-bottom: .875rem;
+    }
+    .fz-book-pill--free { background: rgba(62,94,58,.1); color: var(--acc); border: 1px solid rgba(62,94,58,.2); }
+    .fz-book-pill--paid { background: rgba(0,0,0,.05); color: rgba(0,0,0,.5); border: 1px solid rgba(0,0,0,.1); }
+    .fz-book-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; color: var(--s-ink); margin-bottom: .5rem; line-height: 1.25; }
+    .fz-book-desc { font-size: .925rem; color: var(--s-muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .fz-book-meta { display: flex; flex-direction: column; gap: .3rem; }
+    .fz-book-meta-item { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: rgba(0,0,0,.4); font-weight: 500; }
+    .fz-book-meta-item svg { opacity: .5; flex-shrink: 0; }
+    .fz-book-cta {
+      display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.125rem;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem; font-weight: 700;
+      color: var(--acc); letter-spacing: -.005em;
+    }
+
+    .fz-restart {
+      display: inline-block; margin-top: 1.25rem;
+      background: none; border: none; cursor: pointer;
+      font-size: .85rem; color: var(--s-faint);
+      text-decoration: underline; text-underline-offset: 3px; transition: color .18s;
+    }
+    .fz-restart:hover { color: var(--s-ink); }
+
+    /* Redirect bar (community result) */
+    .fz-redir-bar { height: 3px; background: rgba(0,0,0,.08); border-radius: 9999px; max-width: 10rem; margin: 0 auto; overflow: hidden; }
+    .fz-redir-fill { height: 100%; background: var(--acc); border-radius: 9999px; animation: redirFill var(--dur,3s) linear forwards; }
+    @keyframes redirFill { from { width:0; } to { width:100%; } }
+
+    @media (max-width: 800px) {
+      .fz-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+      .fz-rail { position: static; }
+      .fz-num { font-size: 2.5rem; margin-bottom: .75rem; }
+      .fz-prog { margin-top: 1.75rem; }
+      .fz-book-opts { grid-template-columns: 1fr; }
+    }
 
     /* ── Animations ─────────────────────────────────── */
     @keyframes navIn  { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
@@ -318,37 +410,10 @@ function closeMenu() {
 
 <!-- ══ BOOKING ════════════════════════════════════════ -->
 <section id="booking">
-  <div class="qz-wrap">
-
-    <!-- Header + progress -->
-    <div class="anim">
-      <span class="tag tag-l" style="display:inline-flex;margin-bottom:2rem;">+ Avaliação gratuita</span>
-      <div class="qz-prog-wrap"><div class="qz-prog-bar" id="qz-prog" style="width:0%"></div></div>
-      <span class="qz-step-lbl" id="qz-step-lbl">Passo 1 de 2</span>
+  <div class="fz-surface">
+    <div class="fz-inner" id="fz-inner">
+      <!-- JS renders into here -->
     </div>
-
-    <!-- SLIDE 1: Problem -->
-    <div class="qz-slide anim" id="slide-1">
-      <h2 class="qz-q">Qual é o principal problema do teu cão?</h2>
-      <p class="qz-hint">Podes seleccionar mais do que um.</p>
-      <div class="qz-opts" id="opts-problem"></div>
-      <button class="qz-btn" id="btn-1" onclick="qzGoNext()" disabled>Continuar →</button>
-    </div>
-
-    <!-- SLIDE 2: Budget -->
-    <div class="qz-slide anim" id="slide-2" style="display:none;">
-      <h2 class="qz-q">Qual é o teu orçamento para resolver isto?</h2>
-      <p class="qz-hint">Selecciona uma opção.</p>
-      <div class="qz-opts" id="opts-budget"></div>
-      <button class="qz-btn" id="btn-2" onclick="qzSubmit()" disabled>Ver resultado →</button>
-      <button class="qz-back-btn" onclick="qzGoBack()">← Voltar</button>
-    </div>
-
-    <!-- RESULT -->
-    <div class="qz-slide" id="slide-result" style="display:none;">
-      <div id="qz-result"></div>
-    </div>
-
   </div>
 </section>
 
@@ -401,137 +466,245 @@ function closeMenu() {
 </footer>
 
 <script>
-  /* ── Quiz data ─────────────────────────────────────── */
-  const CALENDLY_URL = '[INSERT CALENDLY LINK]';
+  /* ── Config ───────────────────────────────────────── */
+  const CALENDLY_CALL       = '[INSERT CALENDLY LINK]';
+  const CALENDLY_PRESENCIAL = '[INSERT CALENDLY PRESENCIAL LINK]';
 
-  const PROBLEMS = [
-    { id: 'pull',       label: 'Puxa muito a trela' },
-    { id: 'reactive',   label: 'Reatividade (a cães, pessoas, etc.)' },
-    { id: 'aggress',    label: 'Agressividade' },
-    { id: 'bark',       label: 'Ladra muito em casa' },
-    { id: 'separation', label: 'Ansiedade de separação' },
-    { id: 'recall',     label: 'Chamada (ignora-te quando o chamas)' },
-    { id: 'other',      label: 'Outro' }
+  const STEPS = [
+    {
+      key: 'problem', type: 'multi',
+      q: 'Qual é o principal problema do teu cão?',
+      hint: 'Podes escolher mais do que um.',
+      voice: 'Sê honesto comigo. Quanto melhor eu perceber, mais depressa chegamos à raiz.',
+      opts: [
+        { id: 'pull',       label: 'Puxa muito a trela' },
+        { id: 'reactive',   label: 'Reatividade (a cães, pessoas, etc.)' },
+        { id: 'aggress',    label: 'Agressividade' },
+        { id: 'bark',       label: 'Ladra muito em casa' },
+        { id: 'separation', label: 'Ansiedade de separação' },
+        { id: 'recall',     label: 'Ignora-te quando o chamas' },
+        { id: 'other',      label: 'Outro' },
+      ]
+    },
+    {
+      key: 'duration', type: 'single',
+      q: 'Há quanto tempo é que isto dura?',
+      hint: 'Escolhe uma.',
+      voice: 'Não há resposta errada. Casos antigos também mudam — só preciso de saber onde estamos.',
+      opts: [
+        { id: 'weeks',  label: 'Há poucas semanas' },
+        { id: 'months', label: 'Há alguns meses' },
+        { id: 'year',   label: 'Há mais de um ano' },
+      ]
+    },
+    {
+      key: 'budget', type: 'single',
+      q: 'Quanto estás disposto a investir para resolver isto de vez?',
+      hint: 'Escolhe uma.',
+      voice: 'Sou transparente contigo: trabalho a sério tem um custo. Mas só pago quem fica satisfeito.',
+      opts: [
+        { id: 'low',  label: 'Menos de 200€' },
+        { id: 'mid',  label: 'Entre 200€ e 500€' },
+        { id: 'high', label: 'Mais de 500€' },
+      ]
+    },
   ];
 
-  const BUDGETS = [
-    { id: 'low',  label: 'Menos de 200€' },
-    { id: 'mid',  label: 'Entre 200€ e 500€' },
-    { id: 'high', label: 'Mais de 500€' }
-  ];
+  const LETTERS = ['A','B','C','D','E','F','G'];
 
-  const CHECK_SVG = '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  const DOT_SVG  = '<svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="#fff"/></svg>';
+  /* ── State ────────────────────────────────────────── */
+  let fzStep = 0;
+  let fzDir  = 'fwd';
+  let fzAnswers = { problem: [], duration: null, budget: null };
 
-  /* ── Build options ─────────────────────────────────── */
-  function buildOpts(containerId, items, type) {
-    const wrap = document.getElementById(containerId);
-    items.forEach(item => {
-      const lbl = document.createElement('label');
-      lbl.className = 'qz-opt' + (type === 'radio' ? ' qz-opt--radio' : '');
-      lbl.innerHTML = `
-        <input type="${type}" name="${containerId}" value="${item.id}">
-        <span class="qz-opt-lbl">
-          <span class="qz-box">${type === 'radio' ? DOT_SVG : CHECK_SVG}</span>
-          ${item.label}
-        </span>`;
-      wrap.appendChild(lbl);
-    });
+  /* ── Helpers ──────────────────────────────────────── */
+  function metaIcon(path) {
+    return `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
   }
-  buildOpts('opts-problem', PROBLEMS, 'checkbox');
-  buildOpts('opts-budget',  BUDGETS,  'radio');
+  const ICON_CLOCK = metaIcon('<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>');
+  const ICON_LOC   = metaIcon('<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>');
+  const ICON_ONLINE= metaIcon('<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/>');
+  const ICON_PRICE = metaIcon('<path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>');
 
-  /* Enable/disable continue buttons on selection change */
-  document.getElementById('opts-problem').addEventListener('change', () => {
-    const any = document.querySelectorAll('#opts-problem input:checked').length > 0;
-    document.getElementById('btn-1').disabled = !any;
-  });
-  document.getElementById('opts-budget').addEventListener('change', () => {
-    document.getElementById('btn-2').disabled = false;
-  });
+  /* ── Render ───────────────────────────────────────── */
+  function render() {
+    const root = document.getElementById('fz-inner');
+    if (fzStep === 'result') { renderResult(root); return; }
 
-  /* ── Navigation ────────────────────────────────────── */
-  let qzStep = 1;
+    const step   = STEPS[fzStep];
+    const total  = STEPS.length;
+    const multi  = step.type === 'multi';
+    const valid  = multi ? fzAnswers[step.key].length > 0 : !!fzAnswers[step.key];
+    const pct    = (fzStep / total) * 100;
+    const animCls = fzDir === 'back' ? 'fz-anim-back' : 'fz-anim-fwd';
 
-  function qzShow(slideId, dir) {
-    const prev = document.getElementById('slide-' + qzStep);
-    const next = document.getElementById('slide-' + slideId);
-    prev.style.display = 'none';
-    next.style.display = 'block';
-    next.style.animation = 'none';
-    next.offsetWidth; /* reflow */
-    next.style.animation = dir === 'back' ? 'qzInBack .32s cubic-bezier(.16,1,.3,1) both' : 'qzIn .32s cubic-bezier(.16,1,.3,1) both';
-    qzStep = slideId;
+    const optsHTML = step.opts.map((o, i) => {
+      const sel = multi ? fzAnswers[step.key].includes(o.id) : fzAnswers[step.key] === o.id;
+      return `<button type="button" class="fz-opt${sel ? ' sel' : ''}" data-single="${!multi}" data-id="${o.id}" onclick="fzToggle('${o.id}')">
+        <span class="fz-badge">
+          <span class="fz-badge-letter">${LETTERS[i]}</span>
+          <span class="fz-badge-chk"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1.5 4.6L4 7L9.5 1.5" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+        <span class="fz-opt-text">${o.label}</span>
+        <svg class="fz-check" width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>`;
+    }).join('');
+
+    root.innerHTML = `
+      <div class="fz-grid">
+        <div class="fz-rail">
+          <div class="${animCls}">
+            <div class="fz-num">${String(fzStep + 1).padStart(2,'0')}<span> / ${String(total).padStart(2,'0')}</span></div>
+            <h2 class="fz-question">${step.q}</h2>
+            <p class="fz-voice">${step.voice}</p>
+          </div>
+          <div class="fz-prog">
+            <div class="fz-prog-track"><div class="fz-prog-bar" style="width:${pct}%"></div></div>
+          </div>
+        </div>
+        <div class="fz-main">
+          <div class="${animCls}">
+            <p class="fz-hint">${step.hint}</p>
+            <div class="fz-opts">${optsHTML}</div>
+            <div class="fz-actions">
+              <button class="fz-btn" onclick="fzNext()" ${valid ? '' : 'disabled'}>${fzStep < total - 1 ? 'Continuar' : 'Ver resultado'} →</button>
+              ${fzStep > 0 ? '<button class="fz-back" onclick="fzBack()">← Voltar</button>' : ''}
+            </div>
+          </div>
+        </div>
+      </div>`;
   }
 
-  function qzGoNext() {
-    qzShow(2, 'fwd');
-    document.getElementById('qz-prog').style.width = '50%';
-    document.getElementById('qz-step-lbl').textContent = 'Passo 2 de 2';
-  }
+  function renderResult(root) {
+    const sel    = fzAnswers.problem;
+    const budget = fzAnswers.budget;
+    const core   = ['pull','reactive','aggress','bark','recall'];
+    const onlyOther = sel.length === 1 && sel[0] === 'other';
+    const onlySep   = sel.length === 1 && sel[0] === 'separation';
+    const hasCore   = sel.some(p => core.includes(p));
+    const good = budget !== 'low' && !onlyOther && !onlySep && (budget === 'mid' || budget === 'high') && hasCore;
 
-  function qzGoBack() {
-    qzShow(1, 'back');
-    document.getElementById('qz-prog').style.width = '0%';
-    document.getElementById('qz-step-lbl').textContent = 'Passo 1 de 2';
-  }
+    const animCls = 'fz-anim-fwd';
 
-  /* ── Submit & redirect logic ───────────────────────── */
-  function qzSubmit() {
-    const selected = [...document.querySelectorAll('#opts-problem input:checked')].map(i => i.value);
-    const budget   = document.querySelector('#opts-budget input:checked').value;
+    /* chips */
+    const probLabels = STEPS[0].opts.filter(o => sel.includes(o.id)).map(o => o.label);
+    const durOpt     = STEPS[1].opts.find(o => o.id === fzAnswers.duration);
+    const budOpt     = STEPS[2].opts.find(o => o.id === budget);
+    const chips      = [...probLabels, durOpt && durOpt.label, budOpt && budOpt.label].filter(Boolean);
+    const chipsHTML  = chips.map(c => `<span class="fz-chip">${c}</span>`).join('');
 
-    const isLowBudget    = budget === 'low';
-    const onlyOther      = selected.length === 1 && selected[0] === 'other';
-    const onlySeparation = selected.length === 1 && selected[0] === 'separation';
-    const higherBudget   = budget === 'mid' || budget === 'high';
-    const coreProblems   = ['pull','reactive','aggress','bark','recall'];
-    const hasCore        = selected.some(p => coreProblems.includes(p));
-
-    const goodFit = !isLowBudget && !onlyOther && !onlySeparation && higherBudget && hasCore;
-
-    /* Show result slide */
-    const prev = document.getElementById('slide-2');
-    prev.style.display = 'none';
-    const resultSlide = document.getElementById('slide-result');
-    resultSlide.style.display = 'block';
-    resultSlide.style.animation = 'qzIn .32s cubic-bezier(.16,1,.3,1) both';
-    document.getElementById('qz-prog').style.width = '100%';
-    document.getElementById('qz-step-lbl').textContent = '';
-
-    const result = document.getElementById('qz-result');
-
-    if (goodFit) {
-      result.innerHTML = `
-        <div class="qz-result">
-          <div class="qz-result-icon qz-result-icon--good">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    if (good) {
+      root.innerHTML = `
+        <div class="fz-result ${animCls}">
+          <div class="fz-result-badge">+ Bom encaixe</div>
+          <div class="fz-result-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/>
             </svg>
           </div>
-          <h2 class="qz-result-h">Ótimo! A redireccionarte para a tua avaliação…</h2>
-          <p class="qz-result-p">O teu caso é exactamente o tipo de trabalho em que me especializo. Vemo-nos em breve.</p>
-          <div class="qz-redir-bar"><div class="qz-redir-fill" style="--dur:2s"></div></div>
+          <h2 class="fz-result-h">O teu caso é <em>exactamente</em> o que eu trato.</h2>
+          <p class="fz-result-p">É este o tipo de trabalho em que me especializo. Escolhe como queres começar.</p>
+          ${chips.length ? `<div class="fz-result-recap">${chipsHTML}</div>` : ''}
+          <div class="fz-book-opts">
+            <a href="${CALENDLY_CALL}" class="fz-book-card">
+              <div class="fz-book-pill fz-book-pill--free">Gratuita</div>
+              <div class="fz-book-title">Chamada de avaliação</div>
+              <p class="fz-book-desc">Falamos sobre o teu cão, percebo o que está a acontecer e explico o que posso fazer.</p>
+              <div class="fz-book-meta">
+                <span class="fz-book-meta-item">${ICON_CLOCK} 30 minutos</span>
+                <span class="fz-book-meta-item">${ICON_ONLINE} Online — qualquer lugar</span>
+                <span class="fz-book-meta-item">${ICON_PRICE} 0€</span>
+              </div>
+              <div class="fz-book-cta">Marcar chamada →</div>
+            </a>
+            <a href="${CALENDLY_PRESENCIAL}" class="fz-book-card">
+              <div class="fz-book-pill fz-book-pill--paid">Presencial</div>
+              <div class="fz-book-title">Avaliação presencial</div>
+              <p class="fz-book-desc">Observo o teu cão no ambiente real, avalio o comportamento e entrego um plano concreto.</p>
+              <div class="fz-book-meta">
+                <span class="fz-book-meta-item">${ICON_CLOCK} 60 minutos</span>
+                <span class="fz-book-meta-item">${ICON_LOC} Meadela, Viana do Castelo</span>
+                <span class="fz-book-meta-item">${ICON_PRICE} 35€</span>
+              </div>
+              <div class="fz-book-cta">Marcar sessão →</div>
+            </a>
+          </div>
+          <button class="fz-restart" onclick="fzRestart()">Recomeçar</button>
         </div>`;
-      setTimeout(() => { window.location.href = CALENDLY_URL; }, 2000);
     } else {
-      result.innerHTML = `
-        <div class="qz-result">
-          <div class="qz-result-icon qz-result-icon--comm">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      root.innerHTML = `
+        <div class="fz-result ${animCls}">
+          <div class="fz-result-badge">+ Melhor ponto de partida</div>
+          <div class="fz-result-icon fz-result-icon--comm">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <h2 class="qz-result-h">A comunidade gratuita é o melhor ponto de partida.</h2>
-          <p class="qz-result-p">O melhor ponto de partida para ti é a nossa comunidade gratuita, é grátis e podes começar hoje.</p>
-          <div class="qz-redir-bar"><div class="qz-redir-fill" style="--dur:3s"></div></div>
+          <h2 class="fz-result-h">Começa pela <em>comunidade gratuita</em>.</h2>
+          <p class="fz-result-p">O melhor ponto de partida para ti é a nossa comunidade gratuita. É grátis e podes começar hoje mesmo.</p>
+          ${chips.length ? `<div class="fz-result-recap">${chipsHTML}</div>` : ''}
+          <div class="fz-redir-bar"><div class="fz-redir-fill" style="--dur:3s"></div></div>
+          <button class="fz-restart" onclick="fzRestart()" style="margin-top:1.5rem">Recomeçar</button>
         </div>`;
       setTimeout(() => { window.location.href = 'comunidade.html'; }, 3000);
     }
   }
 
-  /* ── IntersectionObserver for .anim ────────────────── */
+  /* ── Actions ──────────────────────────────────────── */
+  function fzToggle(id) {
+    const step = STEPS[fzStep];
+    const multi = step.type === 'multi';
+    if (multi) {
+      const cur = fzAnswers[step.key];
+      fzAnswers[step.key] = cur.includes(id) ? cur.filter(x => x !== id) : [...cur, id];
+    } else {
+      fzAnswers[step.key] = id;
+    }
+    render();
+  }
+
+  function fzNext() {
+    const step  = STEPS[fzStep];
+    const valid = step.type === 'multi' ? fzAnswers[step.key].length > 0 : !!fzAnswers[step.key];
+    if (!valid) return;
+    fzDir = 'fwd';
+    fzStep = fzStep < STEPS.length - 1 ? fzStep + 1 : 'result';
+    render();
+  }
+
+  function fzBack() {
+    fzDir = 'back';
+    if (fzStep === 'result') { fzStep = STEPS.length - 1; }
+    else if (fzStep > 0)    { fzStep--; }
+    render();
+  }
+
+  function fzRestart() {
+    fzDir = 'back'; fzStep = 0;
+    fzAnswers = { problem: [], duration: null, budget: null };
+    render();
+  }
+
+  /* ── Keyboard ─────────────────────────────────────── */
+  document.addEventListener('keydown', e => {
+    if (fzStep === 'result') return;
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea') return;
+    if (e.key === 'Enter') { e.preventDefault(); fzNext(); return; }
+    if (e.key === 'Backspace' && fzStep > 0) { e.preventDefault(); fzBack(); return; }
+    const idx = LETTERS.indexOf(e.key.toUpperCase());
+    const step = STEPS[fzStep];
+    if (idx >= 0 && idx < step.opts.length) {
+      e.preventDefault();
+      fzToggle(step.opts[idx].id);
+    }
+  });
+
+  /* ── Boot ─────────────────────────────────────────── */
+  render();
+
+  /* IntersectionObserver for hero .anim elements */
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
