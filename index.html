@@ -139,7 +139,7 @@
     }
 
     /* ── Hero ───────────────────────────────────────── */
-    #hero { background: var(--bg); padding-top: 4rem; position: relative; }
+    #hero { background: var(--bg); padding-top: 4rem; padding-bottom: 8rem; position: relative; }
     #hero::before {
       content: ''; position: absolute; inset: 0;
       background: url('brand_assets/hero-bg-img.jpg') center/cover no-repeat;
@@ -212,6 +212,40 @@
     .hero-ph:nth-child(3):hover { transform: rotate(-2deg) scale(1.07); z-index: 10; box-shadow: 0 16px 56px rgba(0,0,0,.7); }
     .hero-ph:nth-child(4):hover { transform: rotate(5deg) scale(1.07);  z-index: 10; box-shadow: 0 16px 56px rgba(0,0,0,.7); }
     .hero-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── Hero VSL ───────────────────────────────────── */
+    .hero-vsl {
+      display: flex; justify-content: center;
+      margin-top: -8rem; margin-bottom: -10rem;
+      position: relative; z-index: 10;
+      padding: 0 1.75rem;
+    }
+    .hero-vsl-thumb {
+      position: relative;
+      width: 100%; max-width: 900px;
+      aspect-ratio: 16 / 9;
+      border-radius: 1rem; overflow: hidden;
+      border: 2.5px solid rgba(255,255,255,.88);
+      box-shadow: 0 8px 40px rgba(0,0,0,.55);
+      cursor: pointer;
+    }
+    .hero-vsl-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-vsl-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.28);
+      border: none; cursor: pointer;
+      transition: background .2s;
+    }
+    .hero-vsl-play:hover { background: rgba(0,0,0,.42); }
+    .hero-vsl-play svg {
+      width: 4rem; height: 4rem;
+      background: rgba(255,255,255,.92); color: #1a1a17;
+      border-radius: 50%; padding: .75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.35);
+      transition: transform .2s cubic-bezier(.16,1,.3,1), background .2s;
+    }
+    .hero-vsl-play:hover svg { transform: scale(1.1); background: #fff; }
 
     /* ── Challenges (cream) ─────────────────────────── */
     #challenges { background: var(--cream); padding: 5.5rem 0; position: relative; z-index: 2; }
@@ -296,7 +330,7 @@
     .parati-no::before { content: '✗'; color: rgba(0,0,0,.28); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
 
     /* ── Números strip ──────────────────────────────────── */
-    #numeros { background: var(--bg3); padding: 5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    #numeros { background: var(--bg); padding: 14rem 0 5rem; }
     .num-strip { display: grid; grid-template-columns: repeat(4,1fr); }
     .num-item { text-align: center; padding: 1.5rem 1rem; border-right: 1px solid var(--border); }
     .num-item:last-child { border-right: none; }
@@ -746,7 +780,8 @@ function closeMenu() {
       </div>
     </div>
   </div>
-  <div class="hero-photos">
+  <!-- hero card images hidden temporarily -->
+  <div class="hero-photos" style="display:none;">
     <div class="hero-ph">
       <img src="brand_assets/Hero%20Card%20Images/hero-card-img-1.jpg" alt="Treino com cão">
     </div>
@@ -760,7 +795,18 @@ function closeMenu() {
       <img src="brand_assets/Hero%20Card%20Images/hero-card-img-4.jpg" alt="Cão e dono">
     </div>
   </div>
+
 </section>
+
+<!-- VSL placeholder — floats between hero and stats -->
+<div class="hero-vsl">
+  <div class="hero-vsl-thumb">
+    <img src="https://placehold.co/1280x720/1a2a1a/4f7a4f?text=VSL+Video" alt="Video">
+    <button class="hero-vsl-play" aria-label="Reproduzir vídeo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+</div>
 
 <!-- ══ NÚMEROS ════════════════════════════════════════ -->
 <section id="numeros">
